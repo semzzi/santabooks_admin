@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AdminLoginController {
 	
-	@RequestMapping(value = "/main", method=RequestMethod.GET)
+	@RequestMapping(value = "admin/main", method=RequestMethod.GET)
 	public void main() {
+		
+	}
+	
+	@RequestMapping(value="/admin/login")
+	public void login() {
 		
 	}
 	
