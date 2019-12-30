@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin.dao.face.AdminDao">
+<select id="selectLoginCnt" parameterType="admin.dto.Admin" resultType="int">
+SELECT count(*) FROM ADMIN
+WHERE 1=1
+AND adminId = #{adminId}
+AND adminPw = #{adminPw}  	
+</select>
+
+<select id="selectMemberCntAll" resultType="int">
+SELECT count(*) FROM member
+</select>
+
+<select id="selectMemberAll" parameterType="admin.util.Paging" resultType="admin.dto.Member">
+SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT * FROM member ORDER BY memberNo DESC)
+B ORDER BY rnum) MEMBER WHERE rnum BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<select id="selectMemberInfo" parameterType="admin.dto.Member" resultType="admin.dto.Member">
+SELECT memberNo, memberId, memberName, memberNick, memberPw, memberBirth, memberTel, memberAdd, 
+memberGender, genre, subcheck FROM MEMBER WHERE memberNo = #{memberNo}
+</select>
+
+<select id="selectNovelInfo" parameterType="admin.dto.Novel" resultType="admin.dto.Novel">
+SELECT novel.novelNo, novel.memberNo, novel.title, novel.discription, novel.score, novel.addDate, novel.category
+FROM novel, member WHERE novel.memberNo = member.memberNo
+AND novel.memberNo = #{memberNo}
+</select>
+
+<select id="selectReviewInfo" parameterType="admin.dto.ReviewSns" resultType="admin.dto.ReviewSns">
+SELECT feedNo, bookName, review, privacy, reviewDate FROM review_sns, book
+WHERE book.bookNo = review_sns.bookNo
+ANd memberNo = #{memberNo} ORDER BY feedNo DESC
+</select>
+
+<select id="selectCommentInfo" parameterType="admin.dto.Comment" resultType="admin.dto.Comment">
+SELECT commentNo, content, addDate FROM comment_table WHERE memberNo = #{memberNo} ORDER BY commentNo DESC
+</select>
+
+</mapper>

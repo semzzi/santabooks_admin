@@ -27,6 +27,16 @@
   border-radius: 2rem;
 }
 
+.btn-primary {
+	background: #147957;
+	color: white;
+	border-color: #147957;
+}
+
+.btn-primary:hover {
+	background: #146050;
+}
+
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;

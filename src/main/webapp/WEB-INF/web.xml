@@ -3,6 +3,26 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+	<!-- web.xml의 가장 윗줄에 작성 -->
+   <!-- web-app 태그의 가장 첫 줄에 작성하세요 -->
+
+   <!-- POST 데이터 한글(UTF-8) 인코딩 필터 -->
+   <filter>
+     <filter-name>encodingFilter</filter-name>
+     <filter-class>
+       org.springframework.web.filter.CharacterEncodingFilter 
+     </filter-class>
+     <init-param>
+       <param-name>encoding</param-name>
+       <param-value>UTF-8</param-value>
+     </init-param>
+   </filter>
+   
+   <filter-mapping>
+     <filter-name>encodingFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

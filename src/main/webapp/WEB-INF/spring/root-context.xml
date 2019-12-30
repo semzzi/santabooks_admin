@@ -9,8 +9,8 @@
 	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="scott"/>
-		<property name="password" value="tiger"/>
+		<property name="username" value="santabooks"/>
+		<property name="password" value="1234"/>
 	</bean>	
 	
 	<!-- JDBC Logger -->
@@ -38,15 +38,14 @@
 		<!-- Mapper 파일 위치 설정 -->
 		<property name="mapperLocations">
 			<array>
-				<value>classpath:/web/dao/impl/**/*DaoImpl.xml</value>
-				<value>classpath:/web/dao/impl/**/*Mapper.xml</value>
+				<value>classpath:/admin/dao/impl/**/*Mapper.xml</value>
 			</array>
 		</property>
 	</bean>
 	
 	<!--  마이바티스 DAO 인터페이스 설정 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="web.dao.face"/>
+		<property name="basePackage" value="admin.dao.face"/>
 	</bean>	
 		
 </beans>
