@@ -12,12 +12,21 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-$("#btnWrite").click(function() {
-	$(form).submit();
+$("#checkbtn").click(function() {
+	$("#checkDelete").submit();
 });
 	
 
 });
+
+/* 체크박스 전체선택, 전체해제 */
+$(function(){ //전체선택 체크박스 클릭 
+	$("#checkAll").click(function(){ //만약 전체 선택 체크박스가 체크된상태일경우 
+		if($("#checkAll").prop("checked")) { //해당화면에 전체 checkbox들을 체크해준다 
+			$("input[type=checkbox]").prop("checked",true); // 전체선택 체크박스가 해제된 경우 
+		} else { //해당화면에 모든 checkbox들의 체크를해제시킨다.
+			$("input[type=checkbox]").prop("checked",false); } }) })
+
 
 </script>  
 
@@ -70,6 +79,11 @@ select {
     border: none;
 }
 
+#checkbtn {
+	position: relative;
+    bottom: 10px;
+}
+
 </style>
 
         <!-- Begin Page Content -->
@@ -83,7 +97,7 @@ select {
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
                   <h6 class="m-0 font-weight-bold text-primary">웹소설 리스트</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/novel" method="get">
+                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/novel" method="post">
                     <select name="searchType">
                     	<option value="title">제목</option> 
                     	<option value="score">평점</option> 
@@ -101,10 +115,11 @@ select {
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/novelDelete" method="get">
+        <form action="/admin/novel" method="post" id="checkDelete">
 			<table class="table table-hover">
 		<tr>	
-		<th style="width: 5%;">번호</th>
+		   	<th style="width: 1%"><input type="checkbox" class="chk" id="checkAll" name="checkAll">	
+			<th style="width: 5%;">번호</th>
 			<th style="width: 7%;">제목</th>
 			<th style="width: 7%;">작성자</th>
 			<th style="width: 5%;">평점</th>
@@ -113,6 +128,9 @@ select {
 		</tr>
 			<c:forEach items="${list }" var="novel">
 		<tr>
+			<td>
+      		<label style="height: 1px;"><input type="checkbox" class="chk" id="checkRow"
+             name="checkRow" value="${novel.novelNo }"></label></td>
 			<td>${novel.novelNo }</td> 
 			<td>${novel.title }</td>   
 			<td>${novel.memberName }</td> 
@@ -123,11 +141,11 @@ select {
 			</c:forEach>
 			</table>
 		</form>
-                </div>
-              </div>
-            </div>
-
-        </div>
+       </div>
+      </div>
+		<button class="btn btn-md btn-danger b-btn" id="checkbtn" style="float: left;">체크삭제</button>
+     </div>
+    </div>
         <!-- /.container-fluid -->
 <!-- 		<a href="/board/write"><button id="btnWrite" style="float: right;">작성</button></a> -->
 

@@ -60,7 +60,7 @@
       <li class="nav-item">
         <a class="nav-link" href="index.html" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
  		  <i class="fas fa-table"></i>       
-           <span>게시글 관리</span></a>
+           <span>회원 게시글 관리</span></a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin/novel">웹소설 관리</a>
@@ -83,6 +83,22 @@
         <a class="nav-link collapsed" href="#">
           <i class="fas fa-truck"></i>
           <span>배송 관리</span>
+        </a>
+      </li>
+      
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="fas fa-book"></i>
+          <span>도서 관리</span>
+        </a>
+      </li>
+      
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="far fa-clipboard"></i>
+          <span>공지사항 관리</span>
         </a>
       </li>
 

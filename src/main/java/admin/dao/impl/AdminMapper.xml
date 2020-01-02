@@ -29,8 +29,9 @@ B ORDER BY rnum) MEMBER WHERE rnum BETWEEN #{startNo} AND #{endNo}
 </select>
 
 <select id="selectMemberInfo" parameterType="admin.dto.Member" resultType="admin.dto.Member">
-SELECT memberNo, memberId, memberName, memberNick, memberPw, memberBirth, memberTel, memberAdd, 
-memberGender, genre, subcheck FROM MEMBER WHERE memberNo = #{memberNo}
+SELECT memberNo, memberId, memberName, memberNick, memberPw, memberBirth, memberTel, 
+memberGender, genre, subcheck, postcode, roadaddress, jibunaddress, detailaddress, extraaddress
+FROM MEMBER WHERE memberNo = #{memberNo}
 </select>
 
 <select id="selectNovelInfo" parameterType="admin.dto.Novel" resultType="admin.dto.Novel">
@@ -113,6 +114,18 @@ AND ${searchType} like '%'||#{keyword}||'%'
 
 <delete id="deleteMember" parameterType="admin.dto.Member">
 DELETE FROM member WHERE memberNo=#{memberNo}
+</delete>
+
+<delete id="deleteNovel" parameterType="admin.dto.Novel">
+DELETE FROM novel WHERE novelNo=#{novelNo}
+</delete>
+
+<delete id="deleteReview" parameterType="admin.dto.ReviewSns">
+DELETE FROM review_sns WHERE feedNo=#{feedNo}
+</delete>
+
+<delete id="deleteComment" parameterType="admin.dto.Comment">
+DELETE FROM comment_table WHERE commentNo=#{commentNo}
 </delete>
 
 </mapper>

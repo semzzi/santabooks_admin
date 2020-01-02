@@ -10,17 +10,22 @@ public class Member {
 	private String memberPw;
 	private int memberBirth;
 	private String memberTel;
-	private String memberAdd;
 	private String memberGender;
 	private String genre;
 	private String subcheck;
+	private String postcode;
+	private String roadaddress;
+	private String jibunaddress;
+	private String detailaddress;
+	private String extraaddress;
 	
 	@Override
 	public String toString() {
-		return "Member [genre=" + genre + ", memberAdd=" + memberAdd + ", memberBirth=" + memberBirth
-				+ ", memberGender=" + memberGender + ", memberId=" + memberId + ", memberName=" + memberName
-				+ ", memberNick=" + memberNick + ", memberNo=" + memberNo + ", memberPw=" + memberPw + ", memberTel="
-				+ memberTel + ", subcheck=" + subcheck + "]";
+		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberName=" + memberName
+				+ ", memberNick=" + memberNick + ", memberPw=" + memberPw + ", memberBirth=" + memberBirth
+				+ ", memberTel=" + memberTel + ", memberGender=" + memberGender + ", genre=" + genre + ", subcheck="
+				+ subcheck + ", postcode=" + postcode + ", roadaddress=" + roadaddress + ", jibunaddress="
+				+ jibunaddress + ", detailaddress=" + detailaddress + ", extraaddress=" + extraaddress + "]";
 	}
 
 	public int getMemberNo() {
@@ -79,14 +84,6 @@ public class Member {
 		this.memberTel = memberTel;
 	}
 
-	public String getMemberAdd() {
-		return memberAdd;
-	}
-
-	public void setMemberAdd(String memberAdd) {
-		this.memberAdd = memberAdd;
-	}
-
 	public String getMemberGender() {
 		return memberGender;
 	}
@@ -110,6 +107,47 @@ public class Member {
 	public void setSubcheck(String subcheck) {
 		this.subcheck = subcheck;
 	}
+
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public String getRoadaddress() {
+		return roadaddress;
+	}
+
+	public void setRoadaddress(String roadaddress) {
+		this.roadaddress = roadaddress;
+	}
+
+	public String getJibunaddress() {
+		return jibunaddress;
+	}
+
+	public void setJibunaddress(String jibunaddress) {
+		this.jibunaddress = jibunaddress;
+	}
+
+	public String getDetailaddress() {
+		return detailaddress;
+	}
+
+	public void setDetailaddress(String detailaddress) {
+		this.detailaddress = detailaddress;
+	}
+
+	public String getExtraaddress() {
+		return extraaddress;
+	}
+
+	public void setExtraaddress(String extraaddress) {
+		this.extraaddress = extraaddress;
+	}
+	
 	
 	
 	

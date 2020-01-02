@@ -93,4 +93,22 @@ public class AdminServiceImpl implements AdminService{
 	public void withDrawalMember(Member member) {
 		adminDao.deleteMember(member);
 	}
+
+	@Override
+	public void deleteNovel(Novel novel) {
+		adminDao.deleteNovel(novel);
+		
+	}
+
+	@Override
+	public void deleteNovel(ReviewSns reviewSns) {
+		adminDao.deleteReview(reviewSns);
+		
+	}
+
+	@Override
+	public void deleteComment(Comment comment) {
+		adminDao.deleteComment(comment);
+		
+	}
 }

@@ -50,6 +50,21 @@ public class BoardManageController {
 		model.addAttribute("list", novelList);		
 	}
 	
+	@RequestMapping(value = "/admin/novel", method = RequestMethod.POST)
+	public String novelCheckDelete(Novel novel, String[] checkRow) {
+		
+	
+		
+		for(int i=0; i<checkRow.length; i++) {
+			logger.info("야 나와라 진짜 : " + checkRow[i]);
+			novel.setNovelNo(Integer.parseInt(checkRow[i]));
+			adminService.deleteNovel(novel);
+			
+			
+		}
+	return "redirect:/admin/novel";
+	}
+	
 	@RequestMapping(value = "/admin/review", method = RequestMethod.GET)
 	public void reviewList(Member member, Model model, Paging paging,
 			@RequestParam(defaultValue = "title") String searchType,
@@ -75,6 +90,19 @@ public class BoardManageController {
 		model.addAttribute("list", reviewList);		
 		}
 	
+	@RequestMapping(value = "/admin/review", method = RequestMethod.POST)
+	public String reviewList(ReviewSns reviewSns, String[] checkRow) {
+		
+
+		for(int i=0; i<checkRow.length; i++) {
+			logger.info("이거슨 피드넘버 받아오는것 ! : " + checkRow[i]);
+			reviewSns.setFeedNo((Integer.parseInt(checkRow[i])));
+			adminService.deleteNovel(reviewSns);
+			
+			}
+		return "redirect:/admin/review";
+	}
+	
 	
 	@RequestMapping(value = "/admin/comment", method = RequestMethod.GET)
 	public void commentList(Member member, Model model, Paging paging,
@@ -99,5 +127,18 @@ public class BoardManageController {
 		
 		model.addAttribute("paging", paging2);
 		model.addAttribute("list", commentList);		
+	}
+	
+	@RequestMapping(value = "/admin/comment", method = RequestMethod.POST)
+	public String commentDelete(Comment comment, String[] checkRow) {
+		
+		for(int i=0; i<checkRow.length; i++) {
+			logger.info("이거슨 코멘트넘 받아오는것 ! : " + checkRow[i]);
+			comment.setCommentNo((Integer.parseInt(checkRow[i])));
+			adminService.deleteComment(comment);
+			
+			}
+		return "redirect:/admin/comment";
+				
 	}
 }

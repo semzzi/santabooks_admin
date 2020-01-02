@@ -120,10 +120,28 @@ public interface AdminDao {
 	public int selectCommentCntAll(Paging paging);
 
 	/**
-	 * 멤버 삭제를 위한 메소드
-	 * @param member - 멤버 객체
+	 * 멤버 삭제를 위한 delete 메소드
+	 * @param member - 멤버 DTO
 	 */
 	public void deleteMember(Member member);
+
+	/**
+	 * 웹소설 삭제를 위한 delete 메소드
+	 * @param novel - 웹소설 DTO
+	 */
+	public void deleteNovel(Novel novel);
+
+	/**
+	 * 리뷰 삭제를 위한 delete 메소드
+	 * @param reviewSns - 리뷰 DTO
+	 */
+	public void deleteReview(ReviewSns reviewSns);
+
+	/**
+	 * 댓글 삭제를 위한 delete 메소드
+	 * @param comment - 댓글 DTO
+	 */
+	public void deleteComment(Comment comment);
 
 
 }

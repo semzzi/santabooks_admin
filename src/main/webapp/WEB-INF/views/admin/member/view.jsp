@@ -80,7 +80,7 @@ button {
 			<td>${member.memberNick }</td> 
 			<td>${member.memberBirth }</td>
 			<td>${member.memberTel }</td>
-			<td>${member.memberAdd }</td>
+			<td>${member.postcode }&nbsp;${member.roadaddress }${member.jibunaddress }${member.detailaddress }</td>
 			<td>${member.memberGender }</td>
 			<td>${member.genre }</td>
 			<td>${member.subcheck }</td>

@@ -12,12 +12,22 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-$("#btnWrite").click(function() {
-	$(form).submit();
+$("#checkbtn").click(function() {
+	$("#checkDelete").submit();
 });
 	
-
 });
+
+
+/* 체크박스 전체선택, 전체해제 */
+$(function(){ //전체선택 체크박스 클릭 
+	$("#checkAll").click(function(){ //만약 전체 선택 체크박스가 체크된상태일경우 
+		if($("#checkAll").prop("checked")) { //해당화면에 전체 checkbox들을 체크해준다 
+			$("input[type=checkbox]").prop("checked",true); // 전체선택 체크박스가 해제된 경우 
+		} else { //해당화면에 모든 checkbox들의 체크를해제시킨다.
+			$("input[type=checkbox]").prop("checked",false); } }) })
+
+
 
 </script>  
 
@@ -70,6 +80,15 @@ select {
     border: none;
 }
 
+#content {
+	min-height: 985px;
+}
+
+#checkbtn {
+	position: relative;
+    bottom: 10px;
+}
+
 </style>
 
         <!-- Begin Page Content -->
@@ -101,10 +120,11 @@ select {
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/reviewDelete" method="get">
+        <form action="/admin/review" method="post" id="checkDelete">
 			<table class="table table-hover">
 		<tr>	
-		<th style="width: 5%;">번호</th>
+			<th style="width: 1%"><input type="checkbox" class="chk" id="checkAll" name="checkAll">			
+			<th style="width: 5%;">번호</th>
 			<th style="width: 10%;">책 이름</th>	
 			<th style="width: 7%;">내용</th>
 			<th style="width: 7%;">작성자</th>
@@ -113,6 +133,9 @@ select {
 		</tr>
 			<c:forEach items="${list }" var="review">
 		<tr>
+		<td>
+      		<label style="height: 1px;"><input type="checkbox" class="chk" id="checkRow"
+             name="checkRow" value="${review.feedNo }"></label></td>
 			<td>${review.feedNo }</td> 
 			<td>${review.bookName }</td>
 			<td>${review.review }</td>   
@@ -123,11 +146,11 @@ select {
 			</c:forEach>
 			</table>
 		</form>
-                </div>
-              </div>
-            </div>
-
-        </div>
+       </div>
+      </div>
+      <button class="btn btn-md btn-danger b-btn" id="checkbtn" style="float: left;">체크삭제</button>        
+     </div>
+	</div>
         <!-- /.container-fluid -->
 <!-- 		<a href="/board/write"><button id="btnWrite" style="float: right;">작성</button></a> -->
 

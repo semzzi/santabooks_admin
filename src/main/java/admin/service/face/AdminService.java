@@ -121,9 +121,28 @@ public interface AdminService {
 
 	/**
 	 * 회원 탈퇴를 위한 메소드
-	 * @param member - 멤버객체
+	 * @param member - 멤버 DTO
 	 */
 	public void withDrawalMember(Member member);
+
+	/**
+	 * 웹소설 삭제를 위한 메소드
+	 * @param novel - novelNo이 담겨있는 DTO
+	 */
+	public void deleteNovel(Novel novel);
+
+	/**
+	 * 리뷰 삭제를 위한 메소드
+	 * @param ReviewSns - feedNo이 담겨있는 DTO
+	 */
+	public void deleteNovel(ReviewSns reviewSns);
+
+	/**
+	 * 댓글 삭제를 위한 메소드
+	 * 
+	 * @param comment - commentNo이 담겨있는 DTO
+	 */
+	public void deleteComment(Comment comment);
 
 	
 }
