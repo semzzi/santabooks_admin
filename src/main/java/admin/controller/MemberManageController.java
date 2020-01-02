@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.dto.Comment;
 import admin.dto.Member;
@@ -25,19 +26,27 @@ public class MemberManageController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberManageController.class);
 	
 	@RequestMapping(value = "/admin/member/list", method = RequestMethod.GET)
-	public void MemberList(Member member, Model model, Paging paging) {
+	public void MemberList(Member member, Model model, Paging paging,
+			@RequestParam(defaultValue = "memberId") String searchType,
+			@RequestParam(defaultValue = "") String keyword) {
 		
-		int totalCount = adminService.selectCntAll();
+	
+		int totalCount = adminService.selectCntAll(paging);
 		
 		logger.info("토탈카운트 : "+totalCount);
 		
 		Paging paging2 = new Paging(totalCount, paging.getCurPage());
+		paging2.setKeyword(keyword);
+		paging2.setSearchType(searchType);
+//		logger.info("@@@keyword : " + paging2.getKeyword());
+//		logger.info("@@@searchType : " + paging2.getSearchType());
 		List<Member> boardList = adminService.getList(paging2);
 		
-		logger.info("페이징  : "+paging2);
-		model.addAttribute("paging", paging2);
-		model.addAttribute("list", boardList);
+//		logger.info("페이징2  : "+paging2);
+//		logger.info("보드리스트!!  : "+boardList);
 		
+		model.addAttribute("paging", paging2);
+		model.addAttribute("list", boardList);		
 	}
 	
 	@RequestMapping(value = "/admin/member/view", method = RequestMethod.GET)
@@ -50,7 +59,7 @@ public class MemberManageController {
 		List<Comment> commentList = adminService.commentInfo(comment);
 		
 		logger.info("멤버넘?? :" + member );
-		logger.info("멤버넘?? 모델 :" + model );	
+		logger.info("멤버넘?? 모델 :" + novelList );	
 		
 		model.addAttribute("member", member);
 		model.addAttribute("novelList", novelList);
@@ -60,5 +69,16 @@ public class MemberManageController {
 		
 		
 		
+	}
+	
+	@RequestMapping(value = "/admin/member/view", method = RequestMethod.POST)
+	public String MemberWithdrawal(Member member, Model model) {
+		
+		
+		logger.info("삭제 멤버넘 : " + member);
+		
+		adminService.withDrawalMember(member);
+		
+		return "redirect:/admin/member/list";
 	}
 }

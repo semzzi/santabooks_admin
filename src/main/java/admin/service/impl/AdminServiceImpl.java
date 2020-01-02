@@ -30,8 +30,8 @@ public class AdminServiceImpl implements AdminService{
 	// 멤버 관리 서비스 -------------------------------------
 
 	@Override
-	public int selectCntAll() {
-		return adminDao.selectMemberCntAll();
+	public int selectCntAll(Paging paging) {
+		return adminDao.selectMemberCntAll(paging);
 	}
 
 	@Override
@@ -57,5 +57,40 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Comment> commentInfo(Comment comment) {
 		return adminDao.selectCommentInfo(comment);
+	}
+
+	@Override
+	public List<Novel> novelList(Paging paging) {
+		return adminDao.selectNovelList(paging);
+	}
+
+	@Override
+	public List<ReviewSns> reviewList(Paging paging) {
+		return adminDao.selectReviewList(paging);
+	}
+
+	@Override
+	public List<Comment> commentList(Paging paging) {
+		return adminDao.selectCommentList(paging);
+	}
+
+	@Override
+	public int novelCntAll(Paging paging) {
+		return adminDao.selectNovelCntAll(paging);
+	}
+
+	@Override
+	public int reviewCntAll(Paging paging) {
+		return adminDao.selectReviewCntAll(paging);
+	}
+
+	@Override
+	public int commentCntAll(Paging paging) {
+		return adminDao.selectCommentCntAll(paging);
+	}
+
+	@Override
+	public void withDrawalMember(Member member) {
+		adminDao.deleteMember(member);
 	}
 }

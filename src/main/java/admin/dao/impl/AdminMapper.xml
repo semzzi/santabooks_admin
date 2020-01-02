@@ -12,12 +12,19 @@ AND adminId = #{adminId}
 AND adminPw = #{adminPw}  	
 </select>
 
-<select id="selectMemberCntAll" resultType="int">
-SELECT count(*) FROM member
+<select id="selectMemberCntAll" parameterType="admin.util.Paging" resultType="int">
+SELECT count(*) FROM member WHERE 1=1
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
 </select>
 
 <select id="selectMemberAll" parameterType="admin.util.Paging" resultType="admin.dto.Member">
-SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT * FROM member ORDER BY memberNo DESC)
+SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT * FROM member WHERE 1=1
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+ ORDER BY memberNo DESC)
 B ORDER BY rnum) MEMBER WHERE rnum BETWEEN #{startNo} AND #{endNo}
 </select>
 
@@ -29,7 +36,7 @@ memberGender, genre, subcheck FROM MEMBER WHERE memberNo = #{memberNo}
 <select id="selectNovelInfo" parameterType="admin.dto.Novel" resultType="admin.dto.Novel">
 SELECT novel.novelNo, novel.memberNo, novel.title, novel.discription, novel.score, novel.addDate, novel.category
 FROM novel, member WHERE novel.memberNo = member.memberNo
-AND novel.memberNo = #{memberNo}
+AND novel.memberNo = #{memberNo}     
 </select>
 
 <select id="selectReviewInfo" parameterType="admin.dto.ReviewSns" resultType="admin.dto.ReviewSns">
@@ -41,5 +48,71 @@ ANd memberNo = #{memberNo} ORDER BY feedNo DESC
 <select id="selectCommentInfo" parameterType="admin.dto.Comment" resultType="admin.dto.Comment">
 SELECT commentNo, content, addDate FROM comment_table WHERE memberNo = #{memberNo} ORDER BY commentNo DESC
 </select>
+
+<select id="selectNovelList" parameterType="admin.util.Paging" resultType="admin.dto.Novel">
+SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT novel.novelNo, novel.memberNo, member.memberName, member.memberId,
+novel.title, novel.discription, novel.score, novel.addDate, novel.category
+FROM novel,member WHERE 1=1
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+AND novel.memberNo = member.memberNo
+ ORDER BY novelNo DESC)
+B ORDER BY rnum) NOVEL WHERE rnum BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<select id="selectReviewList" parameterType="admin.util.Paging" resultType="admin.dto.ReviewSns">
+SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT review_sns.feedNo, member.memberNo, member.memberName, member.memberId,
+review_sns.bookNo, review_sns.review, review_sns.privacy, review_sns.reviewDate, book.bookName
+FROM review_sns,member,book WHERE 1=1
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+AND review_sns.memberNo = member.memberNo
+AND review_sns.bookNo = book.bookNo
+ ORDER BY feedNo DESC)
+B ORDER BY rnum) REVIEW_SNS WHERE rnum BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<select id="selectCommentList" parameterType="admin.util.Paging" resultType="admin.dto.Comment">
+SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT comment_table.commentNo, comment_table.memberNo, member.memberName, member.memberId,
+comment_table.content, comment_table.addDate
+FROM comment_table,member WHERE 1=1
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+AND comment_table.memberNo = member.memberNo
+ ORDER BY commentNo DESC)
+B ORDER BY rnum) c WHERE rnum BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<select id="selectNovelCntAll" parameterType="admin.util.Paging" resultType="int">
+SELECT count(*) FROM novel, member WHERE 1=1
+AND member.memberNo = novel.memberNo
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+</select>
+
+<select id="selectReviewCntAll" parameterType="admin.util.Paging" resultType="int">
+SELECT count(*) FROM review_sns,member,book WHERE 1=1
+AND member.memberNo = review_sns.memberNo
+AND review_sns.bookNo = book.bookNo
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+</select>
+
+<select id="selectCommentCntAll" parameterType="admin.util.Paging" resultType="int">
+SELECT count(*) FROM comment_table, member WHERE 1=1
+AND member.memberNo = comment_table.memberNo
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+</select>
+
+<delete id="deleteMember" parameterType="admin.dto.Member">
+DELETE FROM member WHERE memberNo=#{memberNo}
+</delete>
 
 </mapper>

@@ -40,6 +40,10 @@ table {
 	width: 700px;
 }
 
+button {
+	float: right;
+}
+
 </style>
 
         <!-- Begin Page Content -->
@@ -50,15 +54,15 @@ table {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberId}]님의 상세 정보</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberName}]님의 상세 정보</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="/admin/member/memberdelete" method="post">
+                    <form action="/admin/member/memberdelete" method="get">
 			<table class="table table-hover">
 		<tr>	
 			<th style="width: 5%;">번호</th>
-			<th style="width: 7%;">아이디</th>
+			<th style="width: 7%;">이메일</th>
 			<th style="width: 5%;">이름</th>
 			<th style="width: 10%;">닉네임</th>		
 			<th style="width: 10%;">생년월일</th>		
@@ -69,6 +73,7 @@ table {
 			<th style="width: 10%;">구독여부</th>		
 		</tr>
 		<tr>
+		
 			<td>${member.memberNo }</td> 
 			<td>${member.memberId }</td>   
 			<td>${member.memberName }</td> 
@@ -79,6 +84,7 @@ table {
 			<td>${member.memberGender }</td>
 			<td>${member.genre }</td>
 			<td>${member.subcheck }</td>
+		
 		</tr>
 			</table>
 	<!-- <button>체크삭제</button> -->
@@ -86,18 +92,21 @@ table {
 		</div>
 		</div>
 		</div>
+		
             <!-- Area Chart -->
             <div class="col-xl-12 col-lg-7" id="list">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberId}]님이 작성한 웹소설</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberName}]님이 작성한 웹소설</h6>
                   
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="/admin/member/noveldelete" method="post">
+                    <form action="/admin/member/noveldelete" method="get">
 			<table class="table table-hover">
+			<c:choose>
+			<c:when test="${not empty novelList}">
 		<tr>	
 			<th style="width: 5%;">번호</th>
 			<th style="width: 7%;">제목</th>
@@ -114,6 +123,11 @@ table {
 			<td>${novel.category }</td>
 		</tr>
 			</c:forEach>
+			</c:when>
+			<c:otherwise>			
+			<th>작성된 웹 소설이 없습니다.</th>
+			</c:otherwise>
+			</c:choose>
 			</table>
 	<!-- <button>체크삭제</button> -->
 		</form>
@@ -124,13 +138,15 @@ table {
               <div class="card shadow mb-4">
              
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberId}]님이 작성한 리뷰</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberName}]님이 작성한 리뷰</h6>
                   
                 </div>
             
                 <div class="card-body">
-        <form action="/admin/member/reviewdelete" method="post">
+        <form action="/admin/member/reviewdelete" method="get">
 			<table class="table table-hover">
+			<c:choose>
+			<c:when test="${not empty reviewList}">
 		<tr>	
 			<th style="width: 5%;">번호</th>
 			<th style="width: 7%;">책 제목</th>
@@ -152,6 +168,11 @@ table {
 			<td>${review.reviewDate }</td>
 		</tr>
 			</c:forEach>
+			</c:when>
+			<c:otherwise>			
+			<th>작성된 리뷰가 없습니다.</th>
+			</c:otherwise>
+			</c:choose>
 			</table>
 	<!-- <button>체크삭제</button> --> 	
 	</form>
@@ -161,11 +182,13 @@ table {
 		<div class="col-xl-12 col-lg-7" id="list">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberId}]님이 작성한 댓글</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">[${member.memberName}]님이 작성한 댓글</h6>
                 </div>
                 <div class="card-body">
-        <form action="/admin/member/commentdelete" method="post">
+        <form action="/admin/member/commentdelete" method="get">
 			<table class="table table-hover">
+			<c:choose>
+			<c:when test="${not empty reviewList}">
 		<tr>	
 			<th style="width: 5%;">번호</th>
 			<th style="width: 7%;">내용</th>
@@ -178,11 +201,19 @@ table {
 			<td>${comment.addDate }</td>
 		</tr>
 			</c:forEach>
+			</c:when>
+			<c:otherwise>			
+			<th>작성한 댓글이 없습니다.</th>
+			</c:otherwise>
+			</c:choose>
 			</table>
 	<!-- <button>체크삭제</button> --> 	
 	</form>
                 </div>
               </div>
+              <form action="/admin/member/view?memberNo=${member.memberNo }" method="post">              
+              		<a><button class="btn btn-md btn-primary" id="withDrawal">탈퇴</button></a>
+              </form>
             </div>
 
         <!-- /.container-fluid -->

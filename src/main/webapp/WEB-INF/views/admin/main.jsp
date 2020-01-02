@@ -273,11 +273,7 @@
             </div>
           </div>
 
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
+        
  
- <jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
+<jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
     

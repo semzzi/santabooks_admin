@@ -63,8 +63,8 @@
            <span>게시글 관리</span></a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="utilities-animation.html">웹소설 관리</a>
-            <a class="collapse-item" href="utilities-other.html">리뷰 관리</a>
+            <a class="collapse-item" href="/admin/novel">웹소설 관리</a>
+            <a class="collapse-item" href="/admin/review">리뷰 관리</a>
           </div>
         </div>
       </li>
@@ -72,7 +72,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/admin/comment">
           <i class="fas fa-comment-dots"></i>
           <span>댓글 관리</span>
         </a>

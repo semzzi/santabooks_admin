@@ -21,10 +21,12 @@ public interface AdminService {
 
 	/**
 	 * 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param keyword - 검색 조건
+	 * @param searchType - 검색 타입
 	 * 
 	 * @return int - totalCount 수
 	 */
-	public int selectCntAll();
+	public int selectCntAll(Paging paging);
 
 	/**
 	 * Paging을 이용한 memberList 가져오기
@@ -65,6 +67,63 @@ public interface AdminService {
 	 * @return List<Comment> - 가져온 정보를 리스트로 저장할 Comment객체
 	 */
 	public List<Comment> commentInfo(Comment comment);
+
+	/**
+	 * Paging을 이용한 NovelList 가져오기
+	 * 
+	 * @param paging- 페이징 객체
+	 * @return Novel - Novel테이블 리스트
+	 */
+	public List<Novel> novelList(Paging paging);
+
+	/**
+	 * Paging을 이용한 reviewList 가져오기
+	 * 
+	 * @param paging- 페이징 객체
+	 * @return ReviewSns - ReviewSns테이블 리스트
+	 */
+	public List<ReviewSns> reviewList(Paging paging);
+
+	/**
+	 * Paging을 이용한 commentList 가져오기
+	 * 
+	 * @param paging- 페이징 객체
+	 * @return Comment - comment테이블 리스트
+	 */
+	public List<Comment> commentList(Paging paging);
+
+	/**
+	 * 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param keyword - 검색 조건
+	 * @param searchType - 검색 타입
+	 * 
+	 * @return int - totalCount 수
+	 */
+	public int novelCntAll(Paging paging);
+
+	/**
+	 * 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param keyword - 검색 조건
+	 * @param searchType - 검색 타입
+	 * 
+	 * @return int - totalCount 수
+	 */
+	public int reviewCntAll(Paging paging);
+
+	/**
+	 * 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param keyword - 검색 조건
+	 * @param searchType - 검색 타입
+	 * 
+	 * @return int - totalCount 수
+	 */
+	public int commentCntAll(Paging paging);
+
+	/**
+	 * 회원 탈퇴를 위한 메소드
+	 * @param member - 멤버객체
+	 */
+	public void withDrawalMember(Member member);
 
 	
 }

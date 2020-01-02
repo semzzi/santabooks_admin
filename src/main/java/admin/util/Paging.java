@@ -12,7 +12,8 @@ public class Paging {
 	private int endPage;//화면에 보이는 마지막 페이지 번호(계산으로 알아냄)
 	private int startNo;//화면에 보이는 페이지의 게시글 시작 번호(계산으로 알아냄)
 	private int endNo;//화면에 보이는 페이지의 게시글 끝 번호(계산으로 알아냄)
-	private String search;
+	private String searchType;
+	private String keyword;
 	private int memberNo;
 	
 	
@@ -39,7 +40,7 @@ public class Paging {
 		this.setCurPage(curPage);
 		
 		
-		this.setSearch(search);
+//		this.setSearch(search);
 		this.makePaging();
 		
 	}
@@ -93,13 +94,12 @@ public class Paging {
 		endNo = curPage * listCount;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
-		return "paging [curPage=" + curPage + ", endNo=" + endNo + ", endPage=" + endPage + ", listCount=" + listCount
-				+ ", pageCount=" + pageCount + ", startNo=" + startNo + ", startPage=" + startPage + ", totalCount="
-				+ totalCount + ", totalPage=" + totalPage + ",search=" + search + ",memberNo=" + memberNo + "]";
+		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
+				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
+				+ ", startNo=" + startNo + ", endNo=" + endNo + ", searchType=" + searchType + ", keyword=" + keyword
+				+ ", memberNo=" + memberNo + "]";
 	}
 
 	public int getCurPage() {
@@ -173,13 +173,7 @@ public class Paging {
 	public void setEndNo(int endNo) {
 		this.endNo = endNo;
 	}
-	public String getSearch() {
-		return search;
-	}
 	
-	public void setSearch(String search) {
-		this.search = search;
-	}
 
 	public int getMemberNo() {
 		return memberNo;
@@ -187,6 +181,22 @@ public class Paging {
 
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
 	}
 
 	

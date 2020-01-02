@@ -21,9 +21,11 @@ public interface AdminDao {
 
 	/**
 	 * 리스트 불러오기 위한 사용자 전체 count하기
+	 * @param keyword - 검색 입력
+	 * @param searchType - 검색 타입
 	 * @return int - 회원가입 되어있는 사용자 수
 	 */
-	public int selectMemberCntAll();
+	public int selectMemberCntAll(Paging paging);
 	
 	/**
 	 * 리스트 불러오기 위한 작성한 웹소설 전체 count하기
@@ -68,6 +70,60 @@ public interface AdminDao {
 	 * @return List<Comment> - 저장할 객체
 	 */
 	public List<Comment> selectCommentInfo(Comment comment);
+
+	/**
+	 * 웹소설 전체 리스트 가져오기
+	 * 
+	 * @param paging - 페이징 객체
+	 * @return Novel - 웹소설 DTO
+	 */
+	public List<Novel> selectNovelList(Paging paging);
+
+	/**
+	 * 리뷰 전체 리스트 가져오기
+	 * 
+	 * @param paging - 페이징 객체
+	 * @return Novel - 리뷰 DTO
+	 */
+	public List<ReviewSns> selectReviewList(Paging paging);
+
+	/**
+	 * 댓글 전체 리스트 가져오기
+	 * 
+	 * @param paging - 페이징 객체
+	 * @return Comment - 댓글 DTO
+	 */
+	public List<Comment> selectCommentList(Paging paging);
+
+	/**
+	 * 리스트 불러오기 위한 웹소설 전체 count하기
+	 * @param keyword - 검색 입력
+	 * @param searchType - 검색 타입
+	 * @return int - 등록된 웹소설 수
+	 */
+	public int selectNovelCntAll(Paging paging);
+	
+	/**
+	 * 리스트 불러오기 위한 리뷰 전체 count하기
+	 * @param keyword - 검색 입력
+	 * @param searchType - 검색 타입
+	 * @return int - 등록된 리뷰 수
+	 */
+	public int selectReviewCntAll(Paging paging);
+
+	/**
+	 * 리스트 불러오기 위한 리뷰 전체 count하기
+	 * @param keyword - 검색 입력
+	 * @param searchType - 검색 타입
+	 * @return int - 등록된 댓글 수
+	 */
+	public int selectCommentCntAll(Paging paging);
+
+	/**
+	 * 멤버 삭제를 위한 메소드
+	 * @param member - 멤버 객체
+	 */
+	public void deleteMember(Member member);
 
 
 }

@@ -82,13 +82,12 @@ select {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">회원 리스트</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/member/list" method="get">
+                  <h6 class="m-0 font-weight-bold text-primary">리뷰 리스트</h6>
+                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/review" method="get">
                     <select name="searchType">
-                    	<option value="memberId">이메일</option> 
-                    	<option value="memberName">이름</option> 
-                    	<option value="memberNick">닉네임</option> 
-                    	<option value="memberBirth">생년월일</option> 
+                    	<option value="bookName">책 이름</option> 
+                    	<option value="review">내용</option> 
+                    	<option value="memberName">작성자</option> 
                     </select>
                     <div class="input-group">
               <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -102,32 +101,24 @@ select {
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/memberDelete" method="get">
+        <form action="/admin/reviewDelete" method="get">
 			<table class="table table-hover">
 		<tr>	
-			<th style="width: 5%;">번호</th>
-			<th style="width: 7%;">이메일</th>
-			<th style="width: 5%;">이름</th>
-			<th style="width: 10%;">닉네임</th>		
-			<th style="width: 10%;">생년월일</th>		
-<!-- 			<th style="width: 15%;">전화번호</th>		 -->
-<!-- 			<th style="width: 15%;">주소</th>		 -->
-<!-- 			<th style="width: 10%;">성별</th>		 -->
-<!-- 			<th style="width: 13%;">관심장르</th>		 -->
-<!-- 			<th style="width: 10%;">구독여부</th>		 -->
+		<th style="width: 5%;">번호</th>
+			<th style="width: 10%;">책 이름</th>	
+			<th style="width: 7%;">내용</th>
+			<th style="width: 7%;">작성자</th>
+			<th style="width: 5%;">공개여부</th>
+			<th style="width: 10%;">작성일</th>		
 		</tr>
-			<c:forEach items="${list }" var="member">
+			<c:forEach items="${list }" var="review">
 		<tr>
-			<td>${member.memberNo }</td> 
-			<td><a href="./view?memberNo=${member.memberNo }">${member.memberId }</a></td>   
-			<td>${member.memberName }</td> 
-			<td>${member.memberNick }</td> 
-			<td>${member.memberBirth }</td>
-<%-- 			<td>${member.memberTel }</td> --%>
-<%-- 			<td>${member.memberAdd }</td> --%>
-<%-- 			<td>${member.memberGender }</td> --%>
-<%-- 			<td>${member.genre }</td> --%>
-<%-- 			<td>${member.subcheck }</td> --%>
+			<td>${review.feedNo }</td> 
+			<td>${review.bookName }</td>
+			<td>${review.review }</td>   
+			<td>${review.memberName }</td> 
+			<td>${review.privacy }</td> 
+			<td>${review.reviewDate }</td> 
 		</tr>
 			</c:forEach>
 			</table>
@@ -140,7 +131,7 @@ select {
         <!-- /.container-fluid -->
 <!-- 		<a href="/board/write"><button id="btnWrite" style="float: right;">작성</button></a> -->
 
-	<jsp:include page="/WEB-INF/views/layout/paging.jsp" />   
+	<jsp:include page="/WEB-INF/views/layout/paging_review.jsp" />   
 	</div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
   

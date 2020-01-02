@@ -9,11 +9,14 @@ public class ReviewSns {
 	private int privacy;
 	private String reviewDate;
 	private String bookName;
-	 
+	private String memberId;
+	private String memberName;
+	
 	@Override
 	public String toString() {
-		return "review_sns [bookNo=" + bookNo + ", feedNo=" + feedNo + ", memberNo=" + memberNo + ", privacy=" + privacy
-				+ ", review=" + review + ", reviewDate=" + reviewDate + ", bookName=" + bookName + "]";
+		return "ReviewSns [feedNo=" + feedNo + ", memberNo=" + memberNo + ", bookNo=" + bookNo + ", review=" + review
+				+ ", privacy=" + privacy + ", reviewDate=" + reviewDate + ", bookName=" + bookName + ", memberId="
+				+ memberId + ", memberName=" + memberName + "]";
 	}
 
 	public int getFeedNo() {
@@ -70,6 +73,22 @@ public class ReviewSns {
 
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 	
 }

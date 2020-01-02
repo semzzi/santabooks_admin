@@ -6,11 +6,13 @@ public class Comment {
 	private int memberNo;
 	private String content;
 	private String addDate;
+	private String memberId;
+	private String memberName;
 	
 	@Override
 	public String toString() {
-		return "Comment [commentNo=" + commentNo + ", memberNo=" + memberNo + ", content=" + content + ", addDate="
-				+ addDate + "]";
+		return "Comment [addDate=" + addDate + ", commentNo=" + commentNo + ", content=" + content + ", memberId="
+				+ memberId + ", memberName=" + memberName + ", memberNo=" + memberNo + "]";
 	}
 
 	public int getCommentNo() {
@@ -44,6 +46,21 @@ public class Comment {
 	public void setAddDate(String addDate) {
 		this.addDate = addDate;
 	}
-	
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
 	
 }

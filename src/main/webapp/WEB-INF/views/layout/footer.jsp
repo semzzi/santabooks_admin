@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-      </div>
-      <!-- End of Main Content -->
-
-    </div>
-    <!-- End of Content Wrapper -->
 </div>
+    <!-- End of Content Wrapper -->
      
 <!-- Footer -->
       <footer class="sticky-footer bg-white">
@@ -74,11 +70,11 @@
   <script src="/resources/bootstrap/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="/resources/bootstrap/vendor/chart.js/Chart.min.js"></script>
+<!--   <script src="/resources/bootstrap/vendor/chart.js/Chart.min.js"></script> -->
 
-  <!-- Page level custom scripts -->
-  <script src="/resources/bootstrap/js/demo/chart-area-demo.js"></script>
-  <script src="/resources/bootstrap/js/demo/chart-pie-demo.js"></script>
+<!--   <!-- Page level custom scripts -->
+<!--   <script src="/resources/bootstrap/js/demo/chart-area-demo.js"></script> -->
+<!--   <script src="/resources/bootstrap/js/demo/chart-pie-demo.js"></script> -->
     
   </div>
   <!-- End of Page Wrapper -->
