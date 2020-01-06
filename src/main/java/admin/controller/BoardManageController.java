@@ -25,7 +25,7 @@ public class BoardManageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardManageController.class);
 	
-	@RequestMapping(value = "/admin/novel", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/board/novel", method = RequestMethod.GET)
 	public void novelList(Member member, Model model, Paging paging,
 			@RequestParam(defaultValue = "title") String searchType,
 			@RequestParam(defaultValue = "") String keyword) {
@@ -50,7 +50,7 @@ public class BoardManageController {
 		model.addAttribute("list", novelList);		
 	}
 	
-	@RequestMapping(value = "/admin/novel", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/board/novel", method = RequestMethod.POST)
 	public String novelCheckDelete(Novel novel, String[] checkRow) {
 		
 	
@@ -62,10 +62,10 @@ public class BoardManageController {
 			
 			
 		}
-	return "redirect:/admin/novel";
+	return "redirect:/admin/board/novel";
 	}
 	
-	@RequestMapping(value = "/admin/review", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/board/review", method = RequestMethod.GET)
 	public void reviewList(Member member, Model model, Paging paging,
 			@RequestParam(defaultValue = "title") String searchType,
 			@RequestParam(defaultValue = "") String keyword) {
@@ -90,7 +90,7 @@ public class BoardManageController {
 		model.addAttribute("list", reviewList);		
 		}
 	
-	@RequestMapping(value = "/admin/review", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/board/review", method = RequestMethod.POST)
 	public String reviewList(ReviewSns reviewSns, String[] checkRow) {
 		
 
@@ -100,11 +100,11 @@ public class BoardManageController {
 			adminService.deleteNovel(reviewSns);
 			
 			}
-		return "redirect:/admin/review";
+		return "redirect:/admin/board/review";
 	}
 	
 	
-	@RequestMapping(value = "/admin/comment", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/board/comment", method = RequestMethod.GET)
 	public void commentList(Member member, Model model, Paging paging,
 			@RequestParam(defaultValue = "title") String searchType,
 			@RequestParam(defaultValue = "") String keyword) {
@@ -129,7 +129,7 @@ public class BoardManageController {
 		model.addAttribute("list", commentList);		
 	}
 	
-	@RequestMapping(value = "/admin/comment", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/board/comment", method = RequestMethod.POST)
 	public String commentDelete(Comment comment, String[] checkRow) {
 		
 		for(int i=0; i<checkRow.length; i++) {
@@ -138,7 +138,7 @@ public class BoardManageController {
 			adminService.deleteComment(comment);
 			
 			}
-		return "redirect:/admin/comment";
+		return "redirect:/admin/board/comment";
 				
 	}
 }

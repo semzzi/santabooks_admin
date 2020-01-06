@@ -35,7 +35,7 @@ FROM MEMBER WHERE memberNo = #{memberNo}
 </select>
 
 <select id="selectNovelInfo" parameterType="admin.dto.Novel" resultType="admin.dto.Novel">
-SELECT novel.novelNo, novel.memberNo, novel.title, novel.discription, novel.score, novel.addDate, novel.category
+SELECT novel.novelNo, novel.memberNo, novel.title, novel.discription, novel.addDate, novel.category
 FROM novel, member WHERE novel.memberNo = member.memberNo
 AND novel.memberNo = #{memberNo}     
 </select>
@@ -52,7 +52,7 @@ SELECT commentNo, content, addDate FROM comment_table WHERE memberNo = #{memberN
 
 <select id="selectNovelList" parameterType="admin.util.Paging" resultType="admin.dto.Novel">
 SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT novel.novelNo, novel.memberNo, member.memberName, member.memberId,
-novel.title, novel.discription, novel.score, novel.addDate, novel.category
+novel.title, novel.discription, novel.addDate, novel.category
 FROM novel,member WHERE 1=1
 <if test="keyword != null and !keyword.equals('')">
 AND ${searchType} like '%'||#{keyword}||'%'
@@ -127,5 +127,36 @@ DELETE FROM review_sns WHERE feedNo=#{feedNo}
 <delete id="deleteComment" parameterType="admin.dto.Comment">
 DELETE FROM comment_table WHERE commentNo=#{commentNo}
 </delete>
+
+<select id="selectBookAll" parameterType="admin.util.Paging" resultType="admin.dto.Book">
+SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT book.bookNo, book.genreNo, book.bookName, book.bookWriter,book.bookPublisher, genre.genreName 
+FROM book, genre WHERE 1=1 
+AND book.genreNo = genre.genreNo
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+ ORDER BY bookNo DESC)
+B ORDER BY rnum) MEMBER WHERE rnum BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<select id="selectBookCntAll" parameterType="admin.util.Paging" resultType="int">
+SELECT count(*) FROM book, genre WHERE 1=1
+AND book.genreNo = genre.genreNo
+<if test="keyword != null and !keyword.equals('')">
+AND ${searchType} like '%'||#{keyword}||'%'
+</if>
+</select>
+
+<select id="selectBookByNo" parameterType="admin.dto.Book" resultType="admin.dto.Book">
+SELECT book.bookNo, book.genreNo, book.bookName, book.bookWriter, book.bookPublisher, genre.genreName,
+book.publishingYear, book.bookContent FROM book, genre
+WHERE 1=1 AND book.genreNo = genre.genreNo
+AND book.bookNo = #{bookNo}
+</select>
+
+<select id="selectBookName" resultType="admin.dto.Book">
+SELECT * FROM genre
+</select>
+
 
 </mapper>

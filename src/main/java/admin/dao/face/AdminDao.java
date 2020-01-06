@@ -3,6 +3,7 @@ package admin.dao.face;
 import java.util.List;
 
 import admin.dto.Admin;
+import admin.dto.Book;
 import admin.dto.Comment;
 import admin.dto.Member;
 import admin.dto.Novel;
@@ -96,25 +97,22 @@ public interface AdminDao {
 	public List<Comment> selectCommentList(Paging paging);
 
 	/**
-	 * 리스트 불러오기 위한 웹소설 전체 count하기
-	 * @param keyword - 검색 입력
-	 * @param searchType - 검색 타입
+	 * 웹소설 리스트 불러오기 위한 웹소설 전체 count하기
+	 * @param Paging - 검색 조건 전달, searchType:검색조건 keword:검색어
 	 * @return int - 등록된 웹소설 수
 	 */
 	public int selectNovelCntAll(Paging paging);
 	
 	/**
-	 * 리스트 불러오기 위한 리뷰 전체 count하기
-	 * @param keyword - 검색 입력
-	 * @param searchType - 검색 타입
+	 * 리뷰 리스트 불러오기 위한 리뷰 전체 count하기
+	 * @param Paging - 검색 조건 전달, searchType:검색조건 keword:검색어
 	 * @return int - 등록된 리뷰 수
 	 */
 	public int selectReviewCntAll(Paging paging);
 
 	/**
-	 * 리스트 불러오기 위한 리뷰 전체 count하기
-	 * @param keyword - 검색 입력
-	 * @param searchType - 검색 타입
+	 * 댓글 리스트 불러오기 위한 리뷰 전체 count하기
+	 * @param Paging - 검색 조건 전달, searchType:검색조건 keword:검색어
 	 * @return int - 등록된 댓글 수
 	 */
 	public int selectCommentCntAll(Paging paging);
@@ -142,6 +140,33 @@ public interface AdminDao {
 	 * @param comment - 댓글 DTO
 	 */
 	public void deleteComment(Comment comment);
+
+	/**
+	 * 도서 리스트 얻어오기 위한 select
+	 * @param paging - 페이징 객체
+	 * @return Book - 도서 DTO
+	 */
+	public List<Book> selectBookAll(Paging paging);
+
+	/**
+	 * 도서관리 리스트 불러오기 위한 리뷰 전체 count하기
+	 * @param Paging - 검색 조건 전달, searchType:검색조건 keword:검색어
+	 * @return int - 등록된 도서 수
+	 */
+	public int selectBookCntAll(Paging paging);
+
+	/**
+	 * 도서번호로 책 정보 select 해오기
+	 * @param book - bookNo이 저장된 book DTO 객체 
+	 * @return Book - 정보저장할 book DTO
+	 */
+	public Book selectBookByNo(Book book);
+
+	/**
+	 * 도서 정보 작성시 장르 띄워주기위해 select
+	 * @return Book - Book DTO
+	 */
+	public List<Book> selectBookName();
 
 
 }

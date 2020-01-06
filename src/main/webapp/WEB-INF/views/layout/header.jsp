@@ -26,6 +26,10 @@
 #content {
 	position: relative;
 }
+
+.ml-3, .mx-3 {
+    margin-left: 0 !important;
+}
 </style>
 </head>
 <body id="page-top">
@@ -38,8 +42,8 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/main">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+          <h3 style="position: relative; right: 3px;">🎅</h3>
         </div>
         <div class="sidebar-brand-text mx-3">SantaBooks</div>
       </a>
@@ -47,7 +51,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-
+	<c:if test="${login }">
       <!-- Nav Item - 회원관리 -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/member/list">
@@ -63,8 +67,8 @@
            <span>회원 게시글 관리</span></a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/admin/novel">웹소설 관리</a>
-            <a class="collapse-item" href="/admin/review">리뷰 관리</a>
+            <a class="collapse-item" href="/admin/board/novel">웹소설 관리</a>
+            <a class="collapse-item" href="/admin/board/review">리뷰 관리</a>
           </div>
         </div>
       </li>
@@ -72,7 +76,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/comment">
+        <a class="nav-link collapsed" href="/admin/board/comment">
           <i class="fas fa-comment-dots"></i>
           <span>댓글 관리</span>
         </a>
@@ -88,7 +92,7 @@
       
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/admin/book/list">
           <i class="fas fa-book"></i>
           <span>도서 관리</span>
         </a>
@@ -101,24 +105,24 @@
           <span>공지사항 관리</span>
         </a>
       </li>
-
+	</c:if>
  <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Tables -->
       <c:if test="${empty login }">
       <li class="nav-item">
-        <a class="nav-link" href="/admin/login" data-toggle="modal" data-target="#logoutModal">
+        <a class="nav-link" href="admin/login" data-toggle="modal" data-target="#loginModal">
           <i class="fas fa-user-cog"></i>
-          <span>Login</span></a>
+          <span>로그인</span></a>
       </li>
       </c:if>
 
 	  <c:if test="${login }">
       <li class="nav-item">
-        <a class="nav-link" href="/admin/logout" data-toggle="modal" data-target="#logoutModal">
+        <a class="nav-link" href="admin/logout" data-toggle="modal" data-target="#logoutModal">
           <i class="fas fa-user-cog"></i>
-          <span>Logout</span></a>
+          <span>로그아웃</span></a>
       </li>
       </c:if>
 

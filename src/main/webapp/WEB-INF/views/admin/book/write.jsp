@@ -82,13 +82,14 @@ select {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">회원 목록</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">도서 리스트</h6>
                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/member/list" method="get">
                     <select name="searchType">
-                    	<option value="memberId">이메일</option> 
-                    	<option value="memberName">이름</option> 
-                    	<option value="memberNick">닉네임</option> 
-                    	<option value="memberBirth">생년월일</option> 
+                    	<option value="bookName">제목</option> 
+                    	<option value="genreName">장르</option> 
+                    	<option value="bookWriter">저자</option> 
+                    	<option value="bookPublisher">출판사</option> 
+                    	<option value="bookContent">내용</option> 
                     </select>
                     <div class="input-group">
               <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -102,27 +103,21 @@ select {
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/memberDelete" method="get">
+        <form action="/admin/book/view" method="get">
 			<table class="table table-hover">
 		<tr>	
-			<th style="width: 5%;">번호</th>
-			<th style="width: 7%;">이메일</th>
-			<th style="width: 5%;">이름</th>
-			<th style="width: 10%;">닉네임</th>		
-			<th style="width: 10%;">생년월일</th>		
-<!-- 			<th style="width: 15%;">전화번호</th>		 -->
-<!-- 			<th style="width: 15%;">주소</th>		 -->
-<!-- 			<th style="width: 10%;">성별</th>		 -->
-<!-- 			<th style="width: 13%;">관심장르</th>		 -->
-<!-- 			<th style="width: 10%;">구독여부</th>		 -->
+			<th style="width: 15%;">장르</th>
+			<th style="width: 45%;">제목</th>
+			<th style="width: 15%;">저자</th>		
+			<th style="width: 15%;">출판사</th>					
 		</tr>
-			<c:forEach items="${list }" var="member">
+			<c:forEach items="${list }" var="book">
 		<tr>
-			<td>${member.memberNo }</td> 
-			<td><a href="./view?memberNo=${member.memberNo }">${member.memberId }</a></td>   
-			<td>${member.memberName }</td> 
-			<td>${member.memberNick }</td> 
-			<td>${member.memberBirth }</td>
+			<td><input type="text" name="genreNo" placeholder="1~10까지 "/></td> 
+			<td>${book.genreName }</td> 
+			<td><a href="./view?bookNo=${book.bookNo }">${book.bookName }</a></td>   
+			<td>${book.bookWriter }</td> 
+			<td>${book.bookPublisher }</td>
 <%-- 			<td>${member.memberTel }</td> --%>
 <%-- 			<td>${member.memberAdd }</td> --%>
 <%-- 			<td>${member.memberGender }</td> --%>
@@ -140,7 +135,7 @@ select {
         <!-- /.container-fluid -->
 <!-- 		<a href="/board/write"><button id="btnWrite" style="float: right;">작성</button></a> -->
 
-	<jsp:include page="/WEB-INF/views/layout/paging_member.jsp" />   
+	<jsp:include page="/WEB-INF/views/layout/paging_book.jsp" />   
 	</div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
   

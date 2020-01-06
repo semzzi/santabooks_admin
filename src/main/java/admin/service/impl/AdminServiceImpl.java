@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import admin.dao.face.AdminDao;
 import admin.dto.Admin;
+import admin.dto.Book;
 import admin.dto.Comment;
 import admin.dto.Member;
 import admin.dto.Novel;
@@ -110,5 +111,25 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteComment(Comment comment) {
 		adminDao.deleteComment(comment);
 		
+	}
+
+	@Override
+	public List<Book> bookList(Paging paging) {
+		return adminDao.selectBookAll(paging);
+	}
+
+	@Override
+	public int bookCntAll(Paging paging) {
+		return adminDao.selectBookCntAll(paging);
+	}
+
+	@Override
+	public Book getBookInfo(Book book) {
+		return adminDao.selectBookByNo(book);
+	}
+
+	@Override
+	public List<Book> getGenreName() {
+		return adminDao.selectBookName();
 	}
 }

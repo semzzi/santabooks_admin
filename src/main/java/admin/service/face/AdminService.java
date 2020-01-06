@@ -1,8 +1,10 @@
 package admin.service.face;
 
+
 import java.util.List;
 
 import admin.dto.Admin;
+import admin.dto.Book;
 import admin.dto.Comment;
 import admin.dto.Member;
 import admin.dto.Novel;
@@ -29,7 +31,7 @@ public interface AdminService {
 	public int selectCntAll(Paging paging);
 
 	/**
-	 * Paging을 이용한 memberList 가져오기
+	 * Paging을 이용한 memberList 가져오기, searchType:검색조건 keword:검색어
 	 * 
 	 * @param paging- 페이징 객체
 	 * @return List<Board> - Member테이블 리스트
@@ -93,27 +95,24 @@ public interface AdminService {
 	public List<Comment> commentList(Paging paging);
 
 	/**
-	 * 페이징 처리를 위한 페이지 totalCount 가져오기
-	 * @param keyword - 검색 조건
-	 * @param searchType - 검색 타입
+	 * 웹소설관리 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param Paging - 검색 조건 전달 , searchType:검색조건 keword:검색어
 	 * 
 	 * @return int - totalCount 수
 	 */
 	public int novelCntAll(Paging paging);
 
 	/**
-	 * 페이징 처리를 위한 페이지 totalCount 가져오기
-	 * @param keyword - 검색 조건
-	 * @param searchType - 검색 타입
+	 * 리뷰관리 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param Paging - 검색 조건 전달, searchType:검색조건 keword:검색어
 	 * 
 	 * @return int - totalCount 수
 	 */
 	public int reviewCntAll(Paging paging);
 
 	/**
-	 * 페이징 처리를 위한 페이지 totalCount 가져오기
-	 * @param keyword - 검색 조건
-	 * @param searchType - 검색 타입
+	 * 댓글관리 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param Paging - 검색 조건 전달, searchType:검색조건 keword:검색어
 	 * 
 	 * @return int - totalCount 수
 	 */
@@ -143,6 +142,34 @@ public interface AdminService {
 	 * @param comment - commentNo이 담겨있는 DTO
 	 */
 	public void deleteComment(Comment comment);
+
+	/**
+	 * 도서 관리를 위한 리스트 가져오기
+	 * @param paging - 페이징 객체
+	 * @return Book - 도서 DTO
+	 */
+	public List<Book> bookList(Paging paging);
+
+	/**
+	 * 도서관리 페이징 처리를 위한 페이지 totalCount 가져오기
+	 * @param Paging - 검색 조건 전달, searchType:검색조건 keword:검색어
+	 * 
+	 * @return int - totalCount 수
+	 */
+	public int bookCntAll(Paging paging);
+
+	/**
+	 * 도서번호로 상세페이지에 나올 정보들 가져오기 
+	 * @param book - bookNo이 담겨있는 book DTO
+	 * @return Book - 정보를 저장할 book DTO
+	 */
+	public Book getBookInfo(Book book);
+
+	/**
+	 * 장르 이름 가져오기
+	 * @return Book - book DTO
+	 */
+	public List<Book> getGenreName();
 
 	
 }

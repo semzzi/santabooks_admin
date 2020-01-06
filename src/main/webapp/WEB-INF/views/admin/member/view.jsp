@@ -7,8 +7,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-$("#btnWrite").click(function() {
-	$(form).submit();
+$("#btnwithDrawal").click(function() {
+	$("#formWithDrawal").submit();
 });
 	
 
@@ -59,7 +59,7 @@ button {
                 <!-- Card Body -->
                 <div class="card-body">
                     <form action="/admin/member/memberdelete" method="get">
-			<table class="table table-hover">
+			<table class="table">
 		<tr>	
 			<th style="width: 5%;">번호</th>
 			<th style="width: 7%;">이메일</th>
@@ -104,7 +104,7 @@ button {
                 <!-- Card Body -->
                 <div class="card-body">
                     <form action="/admin/member/noveldelete" method="get">
-			<table class="table table-hover">
+			<table class="table">
 			<c:choose>
 			<c:when test="${not empty novelList}">
 		<tr>	
@@ -144,7 +144,7 @@ button {
             
                 <div class="card-body">
         <form action="/admin/member/reviewdelete" method="get">
-			<table class="table table-hover">
+			<table class="table">
 			<c:choose>
 			<c:when test="${not empty reviewList}">
 		<tr>	
@@ -186,7 +186,7 @@ button {
                 </div>
                 <div class="card-body">
         <form action="/admin/member/commentdelete" method="get">
-			<table class="table table-hover">
+			<table class="table">
 			<c:choose>
 			<c:when test="${not empty reviewList}">
 		<tr>	
@@ -211,8 +211,8 @@ button {
 	</form>
                 </div>
               </div>
-              <form action="/admin/member/view?memberNo=${member.memberNo }" method="post">              
-              		<a><button class="btn btn-md btn-primary" id="withDrawal">탈퇴</button></a>
+              <form action="/admin/member/view?memberNo=${member.memberNo }" method="post" id="formWithDrawal">              
+              		<a><button type="button" class="btn btn-md btn-primary" id="withDrawal" data-toggle="modal" data-target="#withDrawalModal">삭제</button></a>
               </form>
             </div>
 

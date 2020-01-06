@@ -12,12 +12,19 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-$("#checkbtn").click(function() {
-	$("#checkDelete").submit();
-});
+$("#checkbtn").click(function(){
+	if($("input[type=checkbox]").is(":checked")){
+	$('#novelDeleteModal').modal('show');	
+	} else{
+	$('#novelNotDeleteModal').modal('show');
+	}
+})
+	$("#btnNovelDelete").click(function() {
+		$("#checkDelete").submit();	
+	})
 	
-
 });
+
 
 /* 체크박스 전체선택, 전체해제 */
 $(function(){ //전체선택 체크박스 클릭 
@@ -96,7 +103,7 @@ select {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">웹소설 리스트</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">웹소설 목록</h6>
                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/novel" method="post">
                     <select name="searchType">
                     	<option value="title">제목</option> 
@@ -115,7 +122,7 @@ select {
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/novel" method="post" id="checkDelete">
+        <form action="/admin/board/novel" method="post" id="checkDelete">
 			<table class="table table-hover">
 		<tr>	
 		   	<th style="width: 1%"><input type="checkbox" class="chk" id="checkAll" name="checkAll">	
@@ -143,7 +150,8 @@ select {
 		</form>
        </div>
       </div>
-		<button class="btn btn-md btn-danger b-btn" id="checkbtn" style="float: left;">체크삭제</button>
+		<button class="btn btn-md btn-danger b-btn" id="checkbtn"  style="float: left;">체크삭제</button>
+<!-- 		data-toggle="modal" data-target="#novelDeleteModal" -->
      </div>
     </div>
         <!-- /.container-fluid -->

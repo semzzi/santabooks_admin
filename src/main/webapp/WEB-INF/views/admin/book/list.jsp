@@ -11,11 +11,21 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-
-$("#checkbtn").click(function() {
-	$("#checkDelete").submit();
-});
 	
+	$("#checkbtn").click(function(){
+		if($("input[type=checkbox]").is(":checked")){
+		$('#novelDeleteModal').modal('show');	
+		} else{
+		$('#novelNotDeleteModal').modal('show');
+		}
+	})
+		$("#btnNovelDelete").click(function() {
+			$("#checkDelete").submit();	
+		})
+		
+// 	$("#btnWrite").click(function(){
+// 		$(location).attr("href", "/admin/book/write")
+// 	})
 
 });
 
@@ -27,8 +37,6 @@ $(function(){ //전체선택 체크박스 클릭
 		} else { //해당화면에 모든 checkbox들의 체크를해제시킨다.
 			$("input[type=checkbox]").prop("checked",false); } }) })
 
-
-
 </script>  
 
 <style type="text/css">
@@ -37,6 +45,8 @@ a:link {text-decoration: none; color: #858796;}
 a:visited {text-decoration: none; color: #858796;}
 a:active {text-decoration: none; color: #858796;}
 a:hover {text-decoration: underline; color: #858796;}
+
+
 
 
 th{
@@ -56,6 +66,7 @@ tr td:not(:first-child), tr th:not(:first-child) {
 tr td:nth-child(2) {
 	text-align: left;
 }
+
 
 
 table {
@@ -80,6 +91,17 @@ select {
     border: none;
 }
 
+#checkbtn {
+	position: relative;
+    bottom: 10px;
+}
+
+#btnWrite {
+	position: relative;
+    left: 10px;
+    bottom: 9px;
+}
+
 </style>
 
         <!-- Begin Page Content -->
@@ -92,11 +114,13 @@ select {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">댓글 리스트</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/comment" method="get">
+                  <h6 class="m-0 font-weight-bold text-primary">도서 목록</h6>
+                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/book/list" method="get">
                     <select name="searchType">
-                    	<option value="content">내용</option> 
-                    	<option value="memberName">작성자</option> 
+                    	<option value="bookName">제목</option> 
+                    	<option value="genreName">장르</option> 
+                    	<option value="bookWriter">저자</option> 
+                    	<option value="bookPublisher">출판사</option>
                     </select>
                     <div class="input-group">
               <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -110,38 +134,42 @@ select {
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/comment" method="post" id="checkDelete">
+        <form action="/admin/book/list" method="get">
 			<table class="table table-hover">
 		<tr>
-		   	<th style="width: 1%"><input type="checkbox" class="chk" id="checkAll" name="checkAll">				
-			<th style="width: 5%;">번호</th>	
-			<th style="width: 7%;">내용</th>
-			<th style="width: 7%;">작성자</th>
-			<th style="width: 10%;">작성일</th>		
+		   	<th style="width: 5%"><input type="checkbox" class="chk" id="checkAll" name="checkAll">	
+			<th style="width: 8%;">번호</th>
+			<th style="width: 12%;">장르</th>
+			<th style="width: 40%;">제목</th>
+			<th style="width: 20%;">저자</th>		
+			<th style="width: 15%;">출판사</th>				
 		</tr>
-			<c:forEach items="${list }" var="comment">
+			<c:forEach items="${list }" var="book">
 		<tr>
 			<td>
 			<label style="height: 1px;"><input type="checkbox" class="chk" id="checkRow"
              name="checkRow" value="${comment.commentNo }">
              </label>
              </td>
-			<td>${comment.commentNo }</td> 
-			<td>${comment.content }</td>
-			<td>${comment.memberName }</td>   
-			<td>${comment.addDate }</td> 
+			<td>${book.bookNo }</td> 
+			<td>${book.genreName }</td> 
+			<td><a href="./view?bookNo=${book.bookNo }">${book.bookName }</a></td>   
+			<td>${book.bookWriter }</td> 
+			<td>${book.bookPublisher }</td>
 		</tr>
 			</c:forEach>
 			</table>
 		</form>
-       </div>
-      </div>
+                </div>
+              </div>
       <button class="btn btn-md btn-danger b-btn" id="checkbtn" style="float: left;">체크삭제</button>      
-     </div>
-	</div>
+      <a href="/admin/book/write"><button class="btn btn-md btn-primary b-btn" id="btnWrite" style="float: left;">작성</button></a>      
+            </div>
+        </div>
         <!-- /.container-fluid -->
-	
-	<jsp:include page="/WEB-INF/views/layout/paging_comment.jsp" />   
+<!-- 		<a href="/board/write"><button id="btnWrite" style="float: right;">작성</button></a> -->
+
+	<jsp:include page="/WEB-INF/views/layout/paging_book.jsp" />   
 	</div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
   
