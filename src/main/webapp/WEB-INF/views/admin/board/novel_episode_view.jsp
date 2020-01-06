@@ -8,7 +8,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-$("#btnDelete").click(function() {
+$("#btnEpisodeDelete").click(function() {
 	$("#deleteForm").submit();
 	
 });
@@ -67,6 +67,10 @@ select {
     border: none;
 }
 
+#content-wrapper {
+	min-height: 1100px;
+}
+
 </style>
 
         <!-- Begin Page Content -->
@@ -79,49 +83,44 @@ select {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">도서 상세 정보</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">${episode.title}의 상세 정보</h6>
                 
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form id="deleteForm" action="/admin/book/delete?bookNo=${book.bookNo }" method="get">
+        <form id="deleteForm" action="/admin/episode/delete?episodeNo=${episode.episodeNo }" method="get">
 			<table class="table">
-		<tr>	
-			<th scope="row" style="width: 10%;">제목</th>
-			<td>${book.bookName }</td>
-		</tr>   
-		<tr>
-			<th scope="row" style="width: 15%;">저자</th>		
-			<td>${book.bookWriter }</td>
-		</tr> 
 		<tr>
 			<th scope="row" style="width: 10%;">번호</th>
-			<td>${book.bookNo }</td> 
+			<td>${episode.episodeNo }</td> 
+		</tr>
+		<tr>	
+			<th scope="row" style="width: 10%;">제목</th>
+			<td>${episode.title }</td>
 		</tr>
 		<tr>
-			<th scope="row" style="width: 15%;">장르</th>
-			<td>${book.genreName }</td>
+			<th scope="row" style="width: 15%;">작성자</th>
+			<td>${episode.memberName }</td>
 		</tr>
 		<tr> 
-			<th style="width: 15%;">출판사</th>
-			<td>${book.bookPublisher }</td>
+			<th style="width: 15%;">평점</th>
+			<td>${episode.score }</td>
 		</tr>
 		<tr>
-			<th style="width: 15%;">출판일</th>				
-			<td>${book.publishingYear }</td>
+			<th style="width: 15%;">작성일</th>				
+			<td>${episode.addDate }</td>
 		</tr>
 		<tr>
 			<th scope="row">내용</th>				
-			<td colspan="6">${book.bookContent }</td>
+			<td colspan="6">${episode.content }</td>
 		</tr>
 			</table>
-			<input hidden="" value="${book.bookNo }" name="bookNo"/>
+			<input hidden="" value="${episode.episodeNo }" name="episodeNo"/>
 		</form>
                 </div>
               </div>
-           <a href="/admin/book/list"><button class="btn btn-md btn-primary b-btn" id="btnlist">목록</button></a>           
-           <button class="btn btn-md btn-primary b-btn" data-toggle="modal" data-target="#bookDelete"  style="float: right;">삭제</button>           
-           <a href="/admin/book/update?bookNo=${book.bookNo }"><button class="btn btn-md btn-primary b-btn" id="btnUpdate">수정</button></a>           
+           <a href="/admin/board/novel_episode?novelNo=${episode.novelNo }"><button class="btn btn-md btn-primary b-btn" id="btnlist">목록</button></a>           
+           <button class="btn btn-md btn-primary b-btn" data-toggle="modal" data-target="#episodeDelete" style="float: right;">삭제</button>           
             </div>
 
         </div>

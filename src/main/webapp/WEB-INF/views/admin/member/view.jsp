@@ -210,7 +210,8 @@ button {
 	<!-- <button>체크삭제</button> --> 	
 	</form>
                 </div>
-              </div>
+              </div>              
+              		<a href="/admin/member/list"><button class="btn btn-md btn-primary" id="list" style="float: left;">목록</button></a>
               <form action="/admin/member/view?memberNo=${member.memberNo }" method="post" id="formWithDrawal">              
               		<a><button type="button" class="btn btn-md btn-primary" id="withDrawal" data-toggle="modal" data-target="#withDrawalModal">삭제</button></a>
               </form>

@@ -5,6 +5,7 @@ import java.util.List;
 import admin.dto.Admin;
 import admin.dto.Book;
 import admin.dto.Comment;
+import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
@@ -167,6 +168,71 @@ public interface AdminDao {
 	 * @return Book - Book DTO
 	 */
 	public List<Book> selectBookName();
+
+	/**
+	 * 등록한 도서 정보 insert
+	 * @param book - 전달받은 값
+	 */
+	public void insertBook(Book book);
+
+	/**
+	 * 도서정보 update
+	 * @param book - 전달받은 값
+	 */
+	public void updateBook(Book book);
+
+	/**
+	 * 도서정보 delete
+	 * @param book - 전달받은 bookNo
+	 */
+	public void deleteBook(Book book);
+
+	/**
+	 * 체크한 도서의 bookNo을 받아서 삭제
+	 * @param book - bookNo이 들어있는 객체
+	 */
+	public void deleteCheckBook(Book book);
+
+	/**
+	 * 웹소설 novelNo에 맞는 episode select하기
+	 * @param paging - 페이징 정보 객체
+	 * @return Episode - List를 담을 DTO
+	 */
+	public List<Episode> selectEpisodeList(Paging paging);
+
+	/**
+	 * novelNo에 맞는 novel select하기
+	 * @param novel - novelNo이 담긴 DTO
+	 * @return Novel - 정보를 저장할 DTO
+	 */
+	public Novel selectNovelByNovelNo(Novel novel);
+
+	/**
+	 * 에피소드 리스트 불러오기 위한 에피소드 전체 count하기
+	 * @param Paging - 정보 전달
+	 * @return int - 등록된 에피소드 수
+	 */
+	public int selectEpisodeCntAll(Paging paging);
+
+	/**
+	 * episodeNo을 이용한 에피소드 상세정보 select하기
+	 * @param episode - episodeNo 전달
+	 * @return Episode - 저장할 DTO
+	 */
+	public Episode selectEpisodeInfo(Episode episode);
+
+	/**
+	 * episodeNo을 이용한 에피소드 delete
+	 * @param episode - 전달받은 정보
+	 */
+	public void deleteEpisode(Episode episode);
+
+	/**
+	 * episodeNo을 이용한 novelNo select
+	 * @param episode - 정보 전달 객체
+	 * @return Episode - 저장할 객체
+	 */
+	public Episode selectNovelNoByEpisodeNo(Episode episode);
 
 
 }

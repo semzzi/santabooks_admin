@@ -9,6 +9,7 @@ import admin.dao.face.AdminDao;
 import admin.dto.Admin;
 import admin.dto.Book;
 import admin.dto.Comment;
+import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
@@ -131,5 +132,65 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Book> getGenreName() {
 		return adminDao.selectBookName();
+	}
+
+	@Override
+	public void bookWrite(Book book) {
+		adminDao.insertBook(book);
+	}
+
+	@Override
+	public void bookUpdate(Book book) {
+		adminDao.updateBook(book);
+		
+	}
+
+	@Override
+	public void bookDelete(Book book) {
+		adminDao.deleteBook(book);
+		
+	}
+
+	@Override
+	public void bookCheckDelete(Book book) {
+		adminDao.deleteCheckBook(book);
+		
+	}
+
+	@Override
+	public List<Episode> episodeList(Paging paging) {
+		return adminDao.selectEpisodeList(paging);
+	}
+
+	@Override
+	public Novel novelInfoByNovelNo(Novel novel) {
+		return adminDao.selectNovelByNovelNo(novel);
+	}
+
+	@Override
+	public int episodeCntAll(Paging paging) {
+		return adminDao.selectEpisodeCntAll(paging);
+	}
+
+	@Override
+	public Episode episodeInfo(Episode episode) {
+		return adminDao.selectEpisodeInfo(episode);
+	}
+
+	@Override
+	public void episodeDelete(Episode episode) {
+		adminDao.deleteEpisode(episode);
+		
+	}
+
+	@Override
+	public Episode novelNoByEpisodeNo(Episode episode) {
+		return adminDao.selectNovelNoByEpisodeNo(episode);
+	}
+
+	@Override
+	public void deleteCheckEpisode(Episode episode) {
+		adminDao.deleteEpisode(episode);
+		
 	}
 }

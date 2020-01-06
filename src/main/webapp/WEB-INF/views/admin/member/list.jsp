@@ -91,7 +91,7 @@ select {
                     	<option value="memberBirth">생년월일</option> 
                     </select>
                     <div class="input-group">
-              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" style="bottom: 8px;">
                   <i class="fas fa-search fa-sm"></i>

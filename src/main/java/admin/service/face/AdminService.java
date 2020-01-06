@@ -6,6 +6,7 @@ import java.util.List;
 import admin.dto.Admin;
 import admin.dto.Book;
 import admin.dto.Comment;
+import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
@@ -170,6 +171,77 @@ public interface AdminService {
 	 * @return Book - book DTO
 	 */
 	public List<Book> getGenreName();
+
+	/**
+	 * 입력받은 도서정보 등록하기
+	 * @param book - 입력받은 정보
+	 */
+	public void bookWrite(Book book);
+
+	/**
+	 * 도서정보 수정하기
+	 * @param book - 입력받은 정보
+	 */
+	public void bookUpdate(Book book);
+
+	/**
+	 * 도서정보 삭제하기
+	 * @param book - 전달받은 bookNo이 담긴 객체
+	 */
+	public void bookDelete(Book book);
+
+	/**
+	 * 책 체크삭제
+	 * @param book - 전달받은 bookNo
+	 */
+	public void bookCheckDelete(Book book);
+
+	/**
+	 * 웹소설 상세정보에서 에피소드 보이기
+	 * @param paging - 페이징 정보를 담은 객체
+	 * @return
+	 */
+	public List<Episode> episodeList(Paging paging);
+
+	/**
+	 * novelNo에 맞는 novel 정보 불러오기
+	 * @param novel - novelNo이 저장된 DTO
+	 * @return Novel - 저장될 DTO
+	 */
+	public Novel novelInfoByNovelNo(Novel novel);
+
+	/**
+	 * 에피소드 카운트
+	 * @param paging - 요청정보 전달
+	 * @return int - total 수
+	 */
+	public int episodeCntAll(Paging paging);
+
+	/**
+	 * 에피소드 상세정보 불러오기
+	 * @param episode - episodeNo을 전달하는 객체
+	 * @return Episode - Episode DTO
+	 */
+	public Episode episodeInfo(Episode episode);
+
+	/**
+	 * 에피소드 삭제
+	 * @param episode - episodeNo 전달 객체
+	 */
+	public void episodeDelete(Episode episode);
+
+	/**
+	 * 에피소드 넘으로 노벨넘 구하기
+	 * @param episode - 에피소드 넘버가 담겨있는 객체
+	 * @return Episode - 저장할 객체
+	 */
+	public Episode novelNoByEpisodeNo(Episode episode);
+
+	/**
+	 * 에피소드 체크삭제를 위한 메소드
+	 * @param episode - 전달받은 episodeNo이 들어있는 객체
+	 */
+	public void deleteCheckEpisode(Episode episode);
 
 	
 }

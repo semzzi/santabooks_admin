@@ -15,6 +15,8 @@ public class Paging {
 	private String searchType;
 	private String keyword;
 	private int memberNo;
+	private int category;
+	private int novelNo;
 	
 	
 	 private Paging() {} // 디폴트 생성자
@@ -99,7 +101,7 @@ public class Paging {
 		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
 				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
 				+ ", startNo=" + startNo + ", endNo=" + endNo + ", searchType=" + searchType + ", keyword=" + keyword
-				+ ", memberNo=" + memberNo + "]";
+				+ ", memberNo=" + memberNo + ",categoty=" + category + ",novelNo=" + novelNo + "]";
 	}
 
 	public int getCurPage() {
@@ -197,6 +199,22 @@ public class Paging {
 
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+
+	public int getNovelNo() {
+		return novelNo;
+	}
+
+	public void setNovelNo(int novelNo) {
+		this.novelNo = novelNo;
 	}
 
 	

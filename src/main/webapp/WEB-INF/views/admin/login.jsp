@@ -35,20 +35,22 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Admin Login</h3>
               <form action="/admin/login" method="post">
+				<c:if test="${empty login }">				
                 <div class="form-label-group">
                   <input type="text" id="adminId"  name="adminId" class="form-control" placeholder="Email address" required autofocus>
                   <label for="adminId">Id</label>
                 </div>
-
                 <div class="form-label-group">
                   <input type="password" id="adminPw" name="adminPw" class="form-control" placeholder="Password" required>
                   <label for="adminPw">Password</label>
                 </div>
-				
-				<c:if test="${empty login }">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Login</button>
                 </c:if>
               </form>
+                <c:if test="${login }">
+              <h3 class="login-heading mb-4">이미 로그인이 되어 있습니다.</h3>
+                <a href="/admin/main"><button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Main</button></a>
+              </c:if>
             </div>
           </div>
         </div>

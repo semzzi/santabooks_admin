@@ -104,14 +104,13 @@ select {
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
                   <h6 class="m-0 font-weight-bold text-primary">웹소설 목록</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/novel" method="post">
-                    <select name="searchType">
-                    	<option value="title">제목</option> 
-                    	<option value="score">평점</option> 
-                    	<option value="memberName">작성자</option> 
+                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/board/novel" method="get">
+                    <select name="searchType">                                   
+                    	<option value="title">제목</option>
+                    	<option value="memberName" selected="selected">작성자</option> 
                     </select>
                     <div class="input-group">
-              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" style="bottom: 8px;">
                   <i class="fas fa-search fa-sm"></i>
@@ -139,12 +138,13 @@ select {
       		<label style="height: 1px;"><input type="checkbox" class="chk" id="checkRow"
              name="checkRow" value="${novel.novelNo }"></label></td>
 			<td>${novel.novelNo }</td> 
-			<td>${novel.title }</td>   
+			<td><a href="./novel_episode?novelNo=${novel.novelNo }">${novel.title }</a></td>   
 			<td>${novel.memberName }</td> 
 			<td>${novel.score }</td> 
 			<td>${novel.addDate }</td> 
 			<td>${novel.category }</td>
 		</tr>
+			<input hidden="" value="${novel.novelNo}" name="novelNo"/>
 			</c:forEach>
 			</table>
 		</form>

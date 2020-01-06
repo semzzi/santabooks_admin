@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import admin.dto.Book;
 import admin.dto.Comment;
+import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
@@ -140,5 +142,63 @@ public class BoardManageController {
 			}
 		return "redirect:/admin/board/comment";
 				
+	}
+	
+	@RequestMapping(value = "/admin/board/novel_episode", method = RequestMethod.GET)
+	public void episodeView(Model model, Novel novel, Episode episode, Paging paging ) {
+		
+//		logger.info("페이징 노벨 먼데 : " + paging.getNovelNo());
+		
+		int totalCount = adminService.episodeCntAll(paging);
+		
+		logger.info("토탈카운트 : "+totalCount);
+		
+		Paging paging2 = new Paging(totalCount, paging.getCurPage());
+//		logger.info("토탈카운트 : "+paging2);
+		
+		paging2.setNovelNo(paging.getNovelNo());
+		
+		Novel novelInfo = adminService.novelInfoByNovelNo(novel);
+		List<Episode> episodeList = adminService.episodeList(paging2);
+		logger.info("토탈카운트 2: "+paging2);
+		
+		model.addAttribute("novel", novelInfo);
+		model.addAttribute("episodeList", episodeList);
+		model.addAttribute("paging", paging2);
+		
+	}
+	
+	@RequestMapping(value = "/admin/board/novel_episode", method = RequestMethod.POST)
+	public String episodeCheckDelete(Episode episode, String[] checkRow) {
+		
+		for(int i=0; i<checkRow.length; i++) {
+			logger.info("이거슨 에피소드넘 받아오는것 ! : " + checkRow[i]);
+			episode.setEpisodeNo((Integer.parseInt(checkRow[i])));
+			adminService.deleteCheckEpisode(episode);
+			
+			}
+		return "redirect:/admin/board/novel_episode?novelNo=" + episode.getNovelNo();
+				
+	}
+	
+	@RequestMapping(value = "/admin/board/novel_episode_view", method = RequestMethod.GET)
+	public void episodeView(Model model, Episode episode) {
+		
+		episode = adminService.episodeInfo(episode);
+		
+		model.addAttribute("episode", episode);
+	}
+	
+
+	@RequestMapping(value = "/admin/episode/delete", method=RequestMethod.GET)
+	public String bookDelete(Episode episode) {
+		
+		logger.info("삭제해주라: " + episode);
+		episode = adminService.novelNoByEpisodeNo(episode);
+		adminService.episodeDelete(episode);
+		
+		
+		return "redirect:/admin/board/novel_episode?novelNo=" + episode.getNovelNo();
+		
 	}
 }

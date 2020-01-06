@@ -123,7 +123,7 @@ select {
                     	<option value="bookPublisher">출판사</option>
                     </select>
                     <div class="input-group">
-              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" style="bottom: 8px;">
                   <i class="fas fa-search fa-sm"></i>
@@ -134,7 +134,7 @@ select {
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/book/list" method="get">
+        <form id="checkDelete" action="/admin/book/list" method="post">
 			<table class="table table-hover">
 		<tr>
 		   	<th style="width: 5%"><input type="checkbox" class="chk" id="checkAll" name="checkAll">	
@@ -148,7 +148,7 @@ select {
 		<tr>
 			<td>
 			<label style="height: 1px;"><input type="checkbox" class="chk" id="checkRow"
-             name="checkRow" value="${comment.commentNo }">
+             name="checkRow" value="${book.bookNo }">
              </label>
              </td>
 			<td>${book.bookNo }</td> 

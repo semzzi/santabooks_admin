@@ -1,25 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="/WEB-INF/views/layout/header.jsp" />   
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-
-<!-- 검색조건 쿼리스트링 가져오기 -->
-<c:set var="query" value="&searchType=${paging.searchType}&keyword=${paging.keyword }"/>
-
-
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />       
+<!-- <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> -->
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
 $("#btnWrite").click(function() {
-	$(form).submit();
+	$("#writeForm").submit();
 });
 	
 
 });
+</script>
 
-</script>  
 
 <style type="text/css">
 
@@ -29,10 +24,6 @@ a:active {text-decoration: none; color: #858796;}
 a:hover {text-decoration: underline; color: #858796;}
 
 
-th{
-	background-color: #e4e4e4;
-	
-}
 
 th, td{
 	
@@ -60,16 +51,19 @@ table {
     margin-right: 0 auto!important;
 }
 
-select {
-	position: relative;
-    right: 91px;
-    top: 29px;
-    height: 36px;
-    border-radius: 3px;
-    background: #ededed;
-    border: none;
+input {
+	width: 500px;
 }
 
+textarea {
+	width: 900px;
+	height: 500px;
+	resize: none;
+}
+
+#content-wrapper {
+	min-height: 1180px;
+}
 </style>
 
         <!-- Begin Page Content -->
@@ -82,60 +76,59 @@ select {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">도서 리스트</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/member/list" method="get">
-                    <select name="searchType">
-                    	<option value="bookName">제목</option> 
-                    	<option value="genreName">장르</option> 
-                    	<option value="bookWriter">저자</option> 
-                    	<option value="bookPublisher">출판사</option> 
-                    	<option value="bookContent">내용</option> 
-                    </select>
-                    <div class="input-group">
-              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" style="bottom: 8px;">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-            </form>
+                  <h6 class="m-0 font-weight-bold text-primary">도서 추가</h6>
+                 
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/book/view" method="get">
-			<table class="table table-hover">
+         <form id = "writeForm" action="/admin/book/write" method="post">
+			<table class="table">
 		<tr>	
-			<th style="width: 15%;">장르</th>
-			<th style="width: 45%;">제목</th>
-			<th style="width: 15%;">저자</th>		
-			<th style="width: 15%;">출판사</th>					
-		</tr>
-			<c:forEach items="${list }" var="book">
+			<th scope="row" style="width: 10%;">제목</th>
+			<td><input type="text" name="bookName" id="bookName"/></td>
+		</tr>   
 		<tr>
-			<td><input type="text" name="genreNo" placeholder="1~10까지 "/></td> 
-			<td>${book.genreName }</td> 
-			<td><a href="./view?bookNo=${book.bookNo }">${book.bookName }</a></td>   
-			<td>${book.bookWriter }</td> 
-			<td>${book.bookPublisher }</td>
-<%-- 			<td>${member.memberTel }</td> --%>
-<%-- 			<td>${member.memberAdd }</td> --%>
-<%-- 			<td>${member.memberGender }</td> --%>
-<%-- 			<td>${member.genre }</td> --%>
-<%-- 			<td>${member.subcheck }</td> --%>
+			<th scope="row" style="width: 15%;">저자</th>		
+			<td><input type="text" name="bookWriter" id="bookWriter"/></td>
 		</tr>
-			</c:forEach>
+		<tr>
+			<th scope="row" style="width: 15%;">장르</th>
+			<td><select name="genreNo" >
+			<option value="1">로맨스</option>
+			<option value="2">판타지</option>
+			<option value="3">자기계발</option>
+			<option value="4">예술</option>
+			<option value="5">컴퓨터/IT</option>
+			<option value="6">시/에세이</option>
+			<option value="7">경제/경영</option>
+			<option value="8">만화</option>
+			<option value="9">여행</option>
+			<option value="10">건강</option>
+			</select></td>
+		</tr>
+		<tr> 
+			<th style="width: 15%;">출판사</th>
+			<td><input type="text" name="bookPublisher" id="bookPublisher" /></td>
+		</tr>
+		<tr>
+			<th style="width: 15%;">출판일</th>				
+			<td><input type="text" name="publishingYear" id="datepicker" placeholder="ex)1996-01-01"/></td>
+			
+		</tr>
+		<tr>
+			<th scope="row" >내용</th>				
+			<td colspan="6"><textarea name="bookContent"></textarea></td>
+		</tr>
 			</table>
 		</form>
                 </div>
               </div>
+      <a href="/admin/book/list"><button class="btn btn-md btn-primary b-btn" id="btnlist">목록</button></a>        
+      <button class="btn btn-md btn-primary b-btn" id="btnWrite0" style="float: right;" data-toggle="modal" data-target="#bookWrite">작성</button>        
             </div>
-
         </div>
         <!-- /.container-fluid -->
-<!-- 		<a href="/board/write"><button id="btnWrite" style="float: right;">작성</button></a> -->
-
-	<jsp:include page="/WEB-INF/views/layout/paging_book.jsp" />   
+   
 	</div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
   

@@ -30,6 +30,10 @@
 .ml-3, .mx-3 {
     margin-left: 0 !important;
 }
+
+.btn {
+	color: white;
+}
 </style>
 </head>
 <body id="page-top">

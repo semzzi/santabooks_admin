@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.dto.Book;
+import admin.dto.Comment;
 import admin.service.face.AdminService;
 import admin.util.Paging;
 
@@ -48,6 +49,19 @@ public class BookManageController {
 		
 	}
 	
+	@RequestMapping(value = "/admin/book/list", method = RequestMethod.POST)
+	public String bookCheckDelete(Book book, String[] checkRow) {
+		
+		for(int i=0; i<checkRow.length; i++) {
+			logger.info("@@@@@@@@@@@@@@ 받아오는것 ! : " + checkRow[i]);
+			book.setBookNo((Integer.parseInt(checkRow[i])));
+			adminService.bookCheckDelete(book);
+			
+			}
+		return "redirect:/admin/book/list";
+				
+	}
+	
 	@RequestMapping(value = "/admin/book/view", method=RequestMethod.GET)
 	public void bookList(Book book, Model model) {
 		
@@ -70,8 +84,39 @@ public class BookManageController {
 	@RequestMapping(value = "/admin/book/write", method=RequestMethod.POST)
 	public String bookWriteProc(Book book, Model model) {
 		
+		adminService.bookWrite(book);
+		
+		return "redirect:/admin/book/view?bookNo=" + book.getBookNo();
+	}
+	
+	@RequestMapping(value = "/admin/book/update", method=RequestMethod.GET)
+	public void bookUpdate(Book book, Model model) {
+		
+		book = adminService.getBookInfo(book);
+		
+		logger.info("책!!!! :" + book.toString());
+		model.addAttribute("book", book);
+	}
+	
+	@RequestMapping(value = "/admin/book/update", method=RequestMethod.POST)
+	public String bookUpdateProc(Book book, Model model) {
+		
+		adminService.bookUpdate(book);
+
+		
+		return "redirect:/admin/book/view?bookNo=" + book.getBookNo();
+
+	}
+	
+	@RequestMapping(value = "/admin/book/delete", method=RequestMethod.GET)
+	public String bookDelete(Book book, Model model) {
+		
+		logger.info("삭제해주라: " + book);
+		adminService.bookDelete(book);
+		
 		
 		return "redirect:/admin/book/list";
+		
 	}
 
 }
