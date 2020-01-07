@@ -107,7 +107,7 @@ select {
                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/board/novel" method="get">
                     <select name="searchType">                                   
                     	<option value="title">제목</option>
-                    	<option value="memberName" selected="selected">작성자</option> 
+                    	<option value="memberName">작성자</option> 
                     </select>
                     <div class="input-group">
               <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="basic-addon2">

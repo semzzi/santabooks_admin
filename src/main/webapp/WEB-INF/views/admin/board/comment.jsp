@@ -98,7 +98,7 @@ select {
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
                   <h6 class="m-0 font-weight-bold text-primary">댓글 목록</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/comment" method="get">
+                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/board/comment" method="get">
                     <select name="searchType">
                     	<option value="content">내용</option> 
                     	<option value="memberName">작성자</option> 

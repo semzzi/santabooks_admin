@@ -237,4 +237,12 @@ subscription.detailaddress, subscription.extraaddress FROM member, subscription 
 ORDER BY subNo DESC) B ORDER BY rnum) WHERE rnum BETWEEN #{startNo} AND #{endNo}
 </select>
 
+<select id="selectLatestMember" resultType="admin.dto.Member">
+SELECT a.* FROM(SELECT * FROM member ORDER BY memberNo desc)a <![CDATA[WHERE rownum <= 5]]>
+</select>
+
+<select id="selectLatestBook" resultType="admin.dto.Book">
+SELECT a.* FROM(SELECT * FROM book ORDER BY bookNo desc)a <![CDATA[WHERE rownum <= 5]]>
+</select>
+
 </mapper>

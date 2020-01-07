@@ -215,4 +215,14 @@ public class AdminServiceImpl implements AdminService{
 	public List<Subscription> subMember(Paging paging2) {
 		return adminDao.selectSubMemberAll(paging2);
 	}
+
+	@Override
+	public List<Member> latestMember() {
+		return adminDao.selectLatestMember();
+	}
+
+	@Override
+	public List<Book> latestBook() {
+		return adminDao.selectLatestBook();
+	}
 }

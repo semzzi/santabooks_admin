@@ -255,6 +255,18 @@ public interface AdminDao {
 	 */
 	public List<Subscription> selectSubMemberAll(Paging paging2);
 
+	/**
+	 * 최신 5개의 회원정보 select
+	 * @return Member - 저장 DTO
+	 */
+	public List<Member> selectLatestMember();
+
+	/**
+	 * 최신 5개의 도서정보 select
+	 * @return Book - 저장 DTO
+	 */
+	public List<Book> selectLatestBook();
+
 
 
 }

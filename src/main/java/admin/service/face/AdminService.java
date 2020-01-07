@@ -271,5 +271,17 @@ public interface AdminService {
 	 */
 	public List<Subscription> subMember(Paging paging2);
 
+	/**
+	 * 메인에 내타낼 최신 5개 리스트 (Member)
+	 * @return Member - Member DTO
+	 */
+	public List<Member> latestMember();
+
+	/**
+	 * 메인에 나타낼 최신 5개 리스트 (Book)
+	 * @return Book - Book DTO
+	 */
+	public List<Book> latestBook();
+
 	
 }
