@@ -190,8 +190,8 @@ public class BoardManageController {
 	}
 	
 
-	@RequestMapping(value = "/admin/episode/delete", method=RequestMethod.GET)
-	public String bookDelete(Episode episode) {
+	@RequestMapping(value = "/admin/episode/novel_episode_delete", method=RequestMethod.GET)
+	public String episodeDelete(Episode episode) {
 		
 		logger.info("삭제해주라: " + episode);
 		episode = adminService.novelNoByEpisodeNo(episode);
@@ -200,5 +200,25 @@ public class BoardManageController {
 		
 		return "redirect:/admin/board/novel_episode?novelNo=" + episode.getNovelNo();
 		
+	}
+	
+	@RequestMapping(value = "/admin/board/novel_episode_update", method=RequestMethod.GET)
+	public void episodeUpdate(Episode episode, Model model) {
+		
+		episode = adminService.getEpisodeInfo(episode);
+		
+		model.addAttribute("episode", episode);
+	}
+	
+	@RequestMapping(value = "/admin/board/novel_episode_update", method=RequestMethod.POST)
+	public String episodeUpdateProc(Episode episode, Model model) {
+		
+		logger.info("에피소드 수정111 @@@@@ : " + episode);
+		adminService.episodeUpdate(episode);
+		episode = adminService.novelNoByEpisodeNo(episode);
+		
+		logger.info("에피소드 수정22 @@@@@ : " + episode);
+		
+		return "redirect:/admin/board/novel_episode_view?episodeNo=" + episode.getEpisodeNo();
 	}
 }

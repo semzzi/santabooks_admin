@@ -88,7 +88,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/admin/shipment/list">
           <i class="fas fa-truck"></i>
           <span>배송 관리</span>
         </a>

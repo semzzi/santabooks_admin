@@ -218,8 +218,23 @@ DELETE FROM episode WHERE episodeNo = #{episodeNo}
 </delete>
 
 <select id="selectNovelNoByEpisodeNo" parameterType="admin.dto.Episode" resultType="admin.dto.Episode">
-SELECT novelNo FROM episode WHERE episodeNo = #{episodeNo}
+SELECT novelNo,episodeNo FROM episode WHERE episodeNo = #{episodeNo}
 </select>
 
+<update id="updateEpisode" parameterType="admin.dto.Episode">
+UPDATE episode SET title = #{title}, content = #{content}
+WHERE episodeNo = #{episodeNo}
+</update>
+
+<select id="selectSubMemberCntAll" parameterType="admin.util.Paging" resultType="int">
+SELECT count(*) FROM member WHERE subCheck = '구독중'
+</select>
+
+<select id="selectSubMemberAll" resultType="admin.dto.Subscription" parameterType="admin.util.Paging">
+SELECT DISTINCT * FROM (SELECT rownum rnum, B.* FROM(SELECT member.memberNo, member.memberName, member.memberId, 
+subscription.subNo, subscription.subDate, subscription.subTel, subscription.subTerm, subscription.subPay, subscription.postcode, subscription.roadaddress, subscription.jibunaddress, 
+subscription.detailaddress, subscription.extraaddress FROM member, subscription WHERE member.memberNo = subscription.memberNo AND member.subCheck = '구독중' 
+ORDER BY subNo DESC) B ORDER BY rnum) WHERE rnum BETWEEN #{startNo} AND #{endNo}
+</select>
 
 </mapper>

@@ -83,8 +83,12 @@ button {
 			<td>${member.postcode }&nbsp;${member.roadaddress }${member.jibunaddress }${member.detailaddress }</td>
 			<td>${member.memberGender }</td>
 			<td>${member.genre }</td>
-			<td>${member.subcheck }</td>
-		
+			<c:if test="${member.subcheck eq '구독중' }">
+			<td><a href="admin/member/subInfo"><button class="btn btn-md btn-primary">정보</button></a></td>
+			</c:if>
+			<c:if test="${member.subcheck eq 'n' }">
+			<td>없음</td>
+			</c:if>
 		</tr>
 			</table>
 	<!-- <button>체크삭제</button> -->

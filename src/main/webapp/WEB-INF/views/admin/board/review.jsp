@@ -96,6 +96,13 @@ select {
     bottom: 10px;
 }
 
+#paging {
+	margin-bottom: 11px;
+    position: absolute;
+    right: 24px;
+    bottom: 105px !important;
+}
+
 </style>
 
         <!-- Begin Page Content -->
@@ -147,7 +154,12 @@ select {
 			<td>${review.bookName }</td>
 			<td>${review.review }</td>   
 			<td>${review.memberName }</td> 
-			<td>${review.privacy }</td> 
+			<c:if test="${review.privacy eq 0}">
+			<td>비공개</td> 
+			</c:if>
+			<c:if test="${review.privacy eq 1}">
+			<td>공개</td> 
+			</c:if>
 			<td>${review.reviewDate }</td> 
 		</tr>
 			</c:forEach>

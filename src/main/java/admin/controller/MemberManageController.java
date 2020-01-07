@@ -81,4 +81,9 @@ public class MemberManageController {
 		
 		return "redirect:/admin/member/list";
 	}
+	
+	@RequestMapping(value = "/admin/member/subInfo", method = RequestMethod.POST)
+	public void MemberSubInfoView(Member member, Model model) {
+		
+	}
 }

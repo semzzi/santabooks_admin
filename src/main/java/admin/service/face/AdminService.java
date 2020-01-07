@@ -10,6 +10,7 @@ import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
+import admin.dto.Subscription;
 import admin.util.Paging;
 
 public interface AdminService {
@@ -242,6 +243,33 @@ public interface AdminService {
 	 * @param episode - 전달받은 episodeNo이 들어있는 객체
 	 */
 	public void deleteCheckEpisode(Episode episode);
+
+	/**
+	 * episodeNo으로 에피소드 정보 가져오기
+	 * @param episode - episodeNo을 전달하는 Episode DTO
+	 * @return Episode - 정보를 저장할 DTO
+	 */
+	public Episode getEpisodeInfo(Episode episode);
+
+	/**
+	 * episodeNo으로 에피소드 수정
+	 * @param episode - episodeNo
+	 */
+	public void episodeUpdate(Episode episode);
+
+	/**
+	 * subCheck = '구독중'인 member 수 구하기메소드
+	 * @param paging - 전달할 변수
+	 * @return int - '구독중'인 member 수
+	 */
+	public int subMemberCntAll(Paging paging);
+
+	/**
+	 * 구독중인 멤버 리스트
+	 * @param paging2 - 요청값
+	 * @return Subscription - Subscription DTO
+	 */
+	public List<Subscription> subMember(Paging paging2);
 
 	
 }

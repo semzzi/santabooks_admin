@@ -9,6 +9,7 @@ import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
+import admin.dto.Subscription;
 import admin.util.Paging;
 
 public interface AdminDao {
@@ -233,6 +234,27 @@ public interface AdminDao {
 	 * @return Episode - 저장할 객체
 	 */
 	public Episode selectNovelNoByEpisodeNo(Episode episode);
+
+	/**
+	 * episodeNo을 이용한 episode update
+	 * @param episode - episodeNo 전달
+	 */
+	public void updateEpisode(Episode episode);
+
+	/**
+	 * subCheck = '구독중'인 멤버 카운트
+	 * @param paging - totalPage 
+	 * @return int - 멤버 수
+	 */
+	public int selectSubMemberCntAll(Paging paging);
+
+	/**
+	 * 구독중인 회원 리스트 select
+	 * @param paging2 - 전달 객체
+	 * @return Subscription - 저장 객체
+	 */
+	public List<Subscription> selectSubMemberAll(Paging paging2);
+
 
 
 }

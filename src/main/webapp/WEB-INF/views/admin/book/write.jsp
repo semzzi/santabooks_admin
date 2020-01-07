@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />       
 <!-- <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> -->
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -57,7 +57,7 @@ input {
 
 textarea {
 	width: 900px;
-	height: 500px;
+	height: 700px;
 	resize: none;
 }
 
@@ -112,12 +112,15 @@ textarea {
 		</tr>
 		<tr>
 			<th style="width: 15%;">출판일</th>				
-			<td><input type="text" name="publishingYear" id="datepicker" placeholder="ex)1996-01-01"/></td>
-			
+			<td><input type="text" name="publishingYear" placeholder="ex)1996-01-01" /></td>
 		</tr>
 		<tr>
 			<th scope="row" >내용</th>				
-			<td colspan="6"><textarea name="bookContent"></textarea></td>
+			<td colspan="6"><textarea name="bookContent" id="bookContent"></textarea>
+							<script>
+                       CKEDITOR.replace( 'bookContent' );
+               	</script>
+               	</td>
 		</tr>
 			</table>
 		</form>

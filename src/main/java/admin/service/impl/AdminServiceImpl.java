@@ -13,6 +13,7 @@ import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
+import admin.dto.Subscription;
 import admin.service.face.AdminService;
 import admin.util.Paging;
 
@@ -192,5 +193,26 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteCheckEpisode(Episode episode) {
 		adminDao.deleteEpisode(episode);
 		
+	}
+
+	@Override
+	public Episode getEpisodeInfo(Episode episode) {
+		return adminDao.selectEpisodeInfo(episode);
+	}
+
+	@Override
+	public void episodeUpdate(Episode episode) {
+		adminDao.updateEpisode(episode);
+		
+	}
+
+	@Override
+	public int subMemberCntAll(Paging paging) {
+		return adminDao.selectSubMemberCntAll(paging);
+	}
+
+	@Override
+	public List<Subscription> subMember(Paging paging2) {
+		return adminDao.selectSubMemberAll(paging2);
 	}
 }

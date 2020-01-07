@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />       
 <!-- <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> -->
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -117,7 +118,11 @@ textarea {
 		</tr>
 		<tr>
 			<th scope="row" >내용</th>				
-			<td colspan="6"><textarea name="bookContent">${book.bookContent }</textarea></td>
+			<td colspan="6"><textarea name="bookContent" id="bookContent">${book.bookContent }</textarea>
+				<script>
+                       CKEDITOR.replace( 'bookContent' );
+               	</script>
+			</td>
 		</tr>
 			</table>
 			<input hidden="" value="${book.bookNo}" name="bookNo"/>
