@@ -283,5 +283,23 @@ public interface AdminService {
 	 */
 	public List<Book> latestBook();
 
+	/**
+	 * 메인에 나타낼 최신 5개 리스트(Novel)
+	 * @return Novel - Novel DTO
+	 */
+	public List<Novel> latestNovel();
+
+	/**
+	 * 메인에 나타낼 최신 5개 리스트(Comment)
+	 * @return Comment - Comment DTO
+	 */
+	public List<Comment> latestComment();
+
+	/**
+	 * 메인에 나타낼 최신 5개 리스트(ReviewSns)
+	 * @return Comment - ReviewSns DTO
+	 */
+	public List<ReviewSns> latestReview();
+
 	
 }

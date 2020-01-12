@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import admin.dto.Admin;
 import admin.dto.Book;
+import admin.dto.Comment;
 import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
+import admin.dto.ReviewSns;
 import admin.service.face.AdminService;
 
 @Controller
@@ -56,12 +58,19 @@ public class AdminLoginController {
 	}
 	
 	@RequestMapping(value = "/admin/main", method=RequestMethod.GET)
-	public void main(Model model, Member member, Novel novel, Episode episode, Book book) {
+	public void main(Model model, Member member, Novel novel, 
+			Episode episode, Book book, Comment comment, ReviewSns review) {
 		
 		List<Member> topMemberList = adminService.latestMember();
 		List<Book> topBookList = adminService.latestBook();
+		List<Novel> topNovelList = adminService.latestNovel();
+		List<Comment> topCommentList = adminService.latestComment();
+		List<ReviewSns> topReviewList = adminService.latestReview();
 		
 		model.addAttribute("memberList", topMemberList);
 		model.addAttribute("bookList", topBookList);
+		model.addAttribute("novelList", topNovelList);
+		model.addAttribute("commentList", topCommentList);
+		model.addAttribute("reviewList", topReviewList);
 	}
 }

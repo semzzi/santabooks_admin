@@ -267,6 +267,24 @@ public interface AdminDao {
 	 */
 	public List<Book> selectLatestBook();
 
+	/**
+	 * 최신 5개의 웹소설 정보 select
+	 * @return Novel - 저장 DTO
+	 */
+	public List<Novel> selectLatestNovel();
+
+	/**
+	 * 최신 5개의 댓글 정보 select
+	 * @return Comment - 저장 DTO
+	 */
+	public List<Comment> selectLatestComment();
+
+	/**
+	 * 최신 5개의 리뷰 정보 select
+	 * @return ReviewSns - 저장 DTO
+	 */
+	public List<ReviewSns> selectLatestReview();
+
 
 
 }

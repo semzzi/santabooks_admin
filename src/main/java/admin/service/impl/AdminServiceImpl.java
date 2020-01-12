@@ -225,4 +225,19 @@ public class AdminServiceImpl implements AdminService{
 	public List<Book> latestBook() {
 		return adminDao.selectLatestBook();
 	}
+
+	@Override
+	public List<Novel> latestNovel() {
+		return adminDao.selectLatestNovel();
+	}
+
+	@Override
+	public List<Comment> latestComment() {
+		return adminDao.selectLatestComment();
+	}
+
+	@Override
+	public List<ReviewSns> latestReview() {
+		return adminDao.selectLatestReview();
+	}
 }
