@@ -87,6 +87,12 @@ select {
     bottom: 10px;
 }
 
+#btnlist {
+	position: relative;
+    left: 10px;
+    bottom: 10px;
+}
+
 </style>
 
         <!-- Begin Page Content -->
@@ -130,6 +136,8 @@ select {
        </div>
       </div>
 		<button class="btn btn-md btn-danger b-btn" id="checkbtn"  style="float: left;">체크삭제</button>
+	<a href="/admin/board/novel"><button class="btn btn-md btn-primary b-btn" id="btnlist">목록</button></a>           
+		
 <!-- 		data-toggle="modal" data-target="#novelDeleteModal" -->
      </div>
     </div>

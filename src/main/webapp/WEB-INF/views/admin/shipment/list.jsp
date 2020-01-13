@@ -97,17 +97,17 @@ select {
         <form action="/admin/shipment/list" method="post">
 			<table class="table table-hover">
 		<tr>	
-			<th style="width: 5%;">구독번호</th>
-			<th style="width: 5%;">회원번호</th>			
-			<th style="width: 7%;">이메일</th>
-			<th style="width: 7%;">이름</th>
-			<th style="width: 5%;">배송</th>
+			<th style="width: 10%;">구독번호</th>
+			<th style="width: 10%;">회원번호</th>			
+			<th style="width: 30%;">이메일</th>
+			<th style="width: 20%;">이름</th>
+			<th style="width: 30%;">배송</th>
 		</tr>
 			<c:forEach items="${list }" var="s">
 		<tr>
 			<td>${s.subNo }</td> 
 			<td>${s.memberNo }</td> 
-			<td><a href="./view?memberNo=${s.memberNo }">${s.memberId }</a></td>   
+			<td>${s.memberId }</td>   
 			<td>${s.memberName }</td> 
 			<td class="btnTd" data-memberno='${s.memberNo }'>
 			<c:if test="${s.checkShipment eq 0 }">
