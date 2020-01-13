@@ -18,6 +18,7 @@ public class Member {
 	private String jibunaddress;
 	private String detailaddress;
 	private String extraaddress;
+	private int subNo;
 	
 	@Override
 	public String toString() {
@@ -25,7 +26,7 @@ public class Member {
 				+ ", memberNick=" + memberNick + ", memberPw=" + memberPw + ", memberBirth=" + memberBirth
 				+ ", memberTel=" + memberTel + ", memberGender=" + memberGender + ", genre=" + genre + ", subcheck="
 				+ subcheck + ", postcode=" + postcode + ", roadaddress=" + roadaddress + ", jibunaddress="
-				+ jibunaddress + ", detailaddress=" + detailaddress + ", extraaddress=" + extraaddress + "]";
+				+ jibunaddress + ", detailaddress=" + detailaddress + ", extraaddress=" + extraaddress + ",subNo=" + subNo + "]";
 	}
 
 	public int getMemberNo() {
@@ -146,6 +147,14 @@ public class Member {
 
 	public void setExtraaddress(String extraaddress) {
 		this.extraaddress = extraaddress;
+	}
+
+	public int getSubNo() {
+		return subNo;
+	}
+
+	public void setSubNo(int subNo) {
+		this.subNo = subNo;
 	}
 	
 	

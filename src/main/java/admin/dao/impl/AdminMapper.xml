@@ -233,7 +233,9 @@ SELECT count(*) FROM member WHERE subCheck = '구독중'
 <select id="selectSubMemberAll" resultType="admin.dto.Subscription" parameterType="admin.util.Paging">
 SELECT DISTINCT * FROM (SELECT rownum rnum, B.* FROM(SELECT member.memberNo, member.memberName, member.memberId, 
 subscription.subNo, subscription.subDate, subscription.subTel, subscription.subTerm, subscription.subPay, subscription.postcode, subscription.roadaddress, subscription.jibunaddress, 
-subscription.detailaddress, subscription.extraaddress FROM member, subscription WHERE member.memberNo = subscription.memberNo AND member.subCheck = '구독중' 
+subscription.detailaddress, subscription.extraaddress
+, (select count(*) from shipment WHERE shipmentDate = TO_CHAR(sysdate, 'YYYY-MM') AND memberNo = member.memberNo) checkShipment
+FROM member, subscription WHERE member.memberNo = subscription.memberNo AND member.subCheck = '구독중' 
 ORDER BY subNo DESC) B ORDER BY rnum) WHERE rnum BETWEEN #{startNo} AND #{endNo}
 </select>
 
@@ -248,7 +250,7 @@ SELECT a.* FROM(SELECT b.bookNo, g.genreName, b.bookName, b.bookWriter, b.bookPu
 <select id="selectLatestNovel" resultType="admin.dto.Novel">
 	select * from (
 			select rownum rnum, B.* FROM (
-				select novel.novelNo, novel.memberNo, novel.title, novel.discription, TO_CHAR(TO_DATE(novel.addDate, 'yyyy/mm/dd hh24:mi:ss'), 'YYYY-MM-DD'), novel.category, novel.imgOriginName, novel.imgStoredName,
+				select novel.novelNo, novel.memberNo, novel.title, novel.discription, TO_CHAR(TO_DATE(novel.addDate, 'yyyy/mm/dd hh24:mi:ss'), 'YY-MM-DD') addDate, novel.category, novel.imgOriginName, novel.imgStoredName,
 				(
 					SELECT memberName FROM member WHERE novel.memberNo = member.memberNo
 				) as memberName,
@@ -263,11 +265,49 @@ SELECT a.* FROM(SELECT b.bookNo, g.genreName, b.bookName, b.bookWriter, b.bookPu
 </select>
 
 <select id="selectLatestComment" resultType="admin.dto.Comment">
-SELECT a.* FROM(SELECT c.commentNo, c.content, m.memberName, TO_CHAR(TO_DATE(c.addDate, 'yyyy/mm/dd hh24:mi:ss'), 'YYYY-MM-DD') FROM comment_table c, member m WHERE c.memberNo = m.memberNo ORDER BY c.commentNo desc)a <![CDATA[WHERE rownum <= 5]]>
+SELECT a.* FROM(SELECT c.commentNo, c.content, m.memberName, TO_CHAR(TO_DATE(c.addDate, 'yyyy/mm/dd hh24:mi:ss'), 'YY-MM-DD') addDate FROM comment_table c, member m WHERE c.memberNo = m.memberNo ORDER BY c.commentNo desc)a <![CDATA[WHERE rownum <= 5]]>
 </select>
 
 <select id="selectLatestReview" resultType="admin.dto.ReviewSns">
-SELECT a.* FROM(SELECT r.feedNo, b.bookName, r.review, m.memberName FROM review_sns r, member m, book b WHERE r.memberNo = m.memberNo AND b.bookNo = r.bookNo ORDER BY r.feedNo desc)a <![CDATA[WHERE rownum <= 5]]>
+SELECT a.* FROM(SELECT r.feedNo, b.bookName, r.review, TO_CHAR(TO_DATE(r.reviewDate, 'yyyy/mm/dd'), 'yy-mm-dd') reviewDate, m.memberName FROM review_sns r, member m, book b WHERE r.memberNo = m.memberNo AND b.bookNo = r.bookNo ORDER BY r.feedNo desc)a <![CDATA[WHERE rownum <= 5]]>
+</select>
+
+<select id="selectMemberGenre" parameterType="admin.dto.Member" resultType="admin.dto.Member">
+SELECT m.memberNo, m.genre, s.subNo FROM member m,subscription s WHERE m.memberNo = #{memberNo} AND m.memberNo = s.memberNo
+</select>
+
+<select id="selectBookByGenre" parameterType="admin.dto.Member" resultType="admin.dto.Book">
+SELECT * FROM (
+			SELECT b.bookNo, b.genreNo, b.bookName, b.bookWriter, b.bookPublisher, b.publishingYear, b.bookContent, b.grade FROM book b, member m
+			WHERE b.genreNo IN ( ${genre} )
+			ORDER BY DBMS_RANDOM.RANDOM
+		) B
+		WHERE rownum = 1
+</select>
+
+<insert id="insertShipment" parameterType="admin.dto.Shipment">
+		INSERT INTO shipment (shipno, shipmentdate, memberno, bookno, subno )
+		
+		VALUES ( #{shipNo}, #{shipmentDate}, #{memberNo}, #{bookNo}, #{subNo} )	
+</insert>
+
+<select id="checkShipment" parameterType="admin.util.Paging" resultType="admin.dto.Shipment">
+	SELECT DISTINCT * FROM (SELECT rownum rnum, B.* FROM(SELECT member.memberNo, member.memberName, member.memberId, 
+subscription.subNo, subscription.subDate, subscription.subTel, subscription.subTerm, subscription.subPay, subscription.postcode, subscription.roadaddress, subscription.jibunaddress, 
+subscription.detailaddress, subscription.extraaddress
+, (select count(*) from shipment WHERE shipmentDate = TO_CHAR(sysdate, 'YYYY-MM') AND memberNo = member.memberNo) checkShipment
+FROM member, subscription WHERE member.memberNo = subscription.memberNo AND member.subCheck = '구독중' 
+ORDER BY subNo DESC) B ORDER BY rnum) WHERE rnum BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<update id="updateNovel" parameterType="admin.dto.Novel">
+UPDATE novel SET title = #{title}
+WHERE novelNo = #{novelNo}
+</update>
+
+<select id="selectShipmentList" resultType="admin.dto.Shipment" parameterType="admin.dto.Shipment">
+select ship.shipNo, ship.shipmentDate, ship.memberNo, ship.bookNo, ship.subNo, sub.subDate, sub.subName, sub.subTel, sub.subTerm, sub.subPay, sub.postCode, sub.roadAddress, sub.jibunAddress, sub.detailAddress, sub.extraAddress, b.bookName, m.memberName
+FROM shipment ship, subscription sub, book b, member m WHERE ship.memberNo = sub.memberNo AND b.bookNo = ship.bookNo AND m.memberNo = ship.memberNo AND ship.memberNo = #{memberNo} 
 </select>
 
 </mapper>

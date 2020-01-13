@@ -7,7 +7,7 @@
 	margin-bottom: 11px;
     position: absolute;
     right: 24px;
-    bottom: 15px;
+    bottom: -60px;
 }
 
 .page-link {

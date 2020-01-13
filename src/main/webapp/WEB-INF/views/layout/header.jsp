@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SantaBooks</title>
+  <title>SantaBooks :: Admin</title>
 
   <!-- Custom fonts for this template-->
   <link href="/resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -102,13 +102,13 @@
         </a>
       </li>
       
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="far fa-clipboard"></i>
-          <span>공지사항 관리</span>
-        </a>
-      </li>
+<!--       Nav Item - Pages Collapse Menu -->
+<!--       <li class="nav-item"> -->
+<!--         <a class="nav-link collapsed" href="#"> -->
+<!--           <i class="far fa-clipboard"></i> -->
+<!--           <span>공지사항 관리</span> -->
+<!--         </a> -->
+<!--       </li> -->
 	</c:if>
  <!-- Divider -->
       <hr class="sidebar-divider my-0">

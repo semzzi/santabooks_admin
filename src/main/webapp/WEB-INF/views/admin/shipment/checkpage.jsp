@@ -11,6 +11,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 
+
 </script>  
 
 <style type="text/css">
@@ -73,57 +74,43 @@ select {
             <div class="col-xl-12 col-lg-7" id="list" style="height: 750px;">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
+		<c:forEach items="${shipment }" var="ship">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">회원 목록</h6>
-<!--                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/member/list" method="get"> -->
-<!--                     <select name="searchType"> -->
-<!--                     	<option value="memberId">이메일</option>  -->
-<!--                     	<option value="memberName">이름</option>  -->
-<!--                     	<option value="memberNick">닉네임</option>  -->
-<!--                     	<option value="memberBirth">생년월일</option>  -->
-<!--                     </select> -->
-<!--                     <div class="input-group"> -->
-<!--               <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="basic-addon2"> -->
-<!--               <div class="input-group-append"> -->
-<!--                 <button class="btn btn-primary" style="bottom: 8px;"> -->
-<!--                   <i class="fas fa-search fa-sm"></i> -->
-<!--                 </button> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--             </form> -->
+                  <h6 class="m-0 font-weight-bold text-primary">${ship.shipmentDate }배송 정보 조회</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
         <form action="/admin/shipment/list" method="post">
-			<table class="table table-hover">
-		<tr>	
-			<th style="width: 5%;">구독번호</th>
-			<th style="width: 5%;">회원번호</th>			
-			<th style="width: 7%;">이메일</th>
-			<th style="width: 7%;">이름</th>
-			<th style="width: 5%;">배송</th>
-		</tr>
-			<c:forEach items="${list }" var="s">
+				<table class="table">
+				
 		<tr>
-			<td>${s.subNo }</td> 
-			<td>${s.memberNo }</td> 
-			<td><a href="./view?memberNo=${s.memberNo }">${s.memberId }</a></td>   
-			<td>${s.memberName }</td> 
-			<td class="btnTd" data-memberno='${s.memberNo }'>
-			<c:if test="${s.checkShipment eq 0 }">
-			<button class="btn btn-md btn-primary b-btn shipmentBtn" id="btnShipment">배송</button>
-			</c:if>
-			<c:if test="${s.checkShipment eq 1 }">
-			<button class="btn btn-md btn-primary b-btn shipmentBtn" disabled="disabled" id="btnShipment">배송</button>
-			<a href="/admin/shipment/checkpage?memberNo=${s.memberNo }"><button class="btn btn-md btn-primary b-btn shipmentBtn" type="button">조회</button></a>
-			</c:if>
-			</td> 
+			<th scope="row" style="width: 10%;">배송번호</th>
+			<td>${ship.shipNo }</td> 
 		</tr>
-			<input type="hidden" name="memberNo" value="${s.memberNo }"/>
-			</c:forEach>
+		<tr>	
+			<th scope="row" style="width: 10%;">배송날짜</th>
+			<td>${ship.shipmentDate  }</td>
+		</tr>
+		<tr>
+			<th scope="row" style="width: 15%;">이름</th>
+			<td>${ship.memberName }</td>
+		</tr>
+		<tr> 
+			<th style="width: 15%;">책 이름</th>
+			<td>${ship.bookName }</td>
+		</tr>
+		<tr>
+			<th style="width: 15%;">구독번호</th>				
+			<td>${ship.subNo }</td>
+		</tr>
+		<tr>
+			<th style="width: 15%;">결제금액</th>				
+			<td>${ship.subPay }</td>
+		</tr>
 			</table>
 		</form>
                 </div>
+			</c:forEach>
               </div>
             </div>
 

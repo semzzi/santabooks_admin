@@ -9,6 +9,7 @@ import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
+import admin.dto.Shipment;
 import admin.dto.Subscription;
 import admin.util.Paging;
 
@@ -284,6 +285,48 @@ public interface AdminDao {
 	 * @return ReviewSns - 저장 DTO
 	 */
 	public List<ReviewSns> selectLatestReview();
+
+	/**
+	 * 멤버별 장르 조회
+	 * @param member - memberNo
+	 * @return Member - memberNo, memberGenre
+	 */
+	public Member selectMemberGenre(Member member);
+
+	/**
+	 * 멤버가 선택한 장르로 Book 조회
+	 * @param member - memberNo, genre
+	 * @return Book - Book 정보
+	 */
+	public Book selectBookByGenre(Member member);
+
+	/**
+	 * 배송 정보 insert
+	 * @param shipment - shipment DTO
+	 */
+	public void insertShipment(Shipment shipment);
+
+	/**
+	 * 배송했나확인
+	 * 
+	 * @param paging
+	 * @return 
+	 */
+	public List<Shipment> checkShipment(Paging paging);
+
+	/**
+	 * 웹소설 업데이트 
+	 * @param novel - novelNo
+	 * @return
+	 */
+	public void updateNovel(Novel novel);
+
+	/**
+	 * 멤버별 배송 정보 select
+	 * @param shipment - memberNo
+	 * @return Shipment - 저장 DTO
+	 */
+	public List<Shipment> selectShipmentList(Shipment shipment);
 
 
 

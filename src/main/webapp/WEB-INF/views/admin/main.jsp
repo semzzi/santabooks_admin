@@ -75,7 +75,7 @@
 							<th style="width: 30%;">제목</th>
 							<th style="width: 20%;">작성자</th>
 							<th style="width: 15%;">평점</th>		
-<!-- 							<th style="width: 15%;">작성일</th>	 -->
+							<th style="width: 15%;">작성일</th>	
 						</tr>
 							<c:forEach items="${novelList }" var="novel">
 						<tr>
@@ -83,7 +83,7 @@
 							<td>${novel.title }</td>   
 							<td>${novel.memberName }</td> 
 							<td>${novel.score }</td> 
-<%-- 							<td>${novel.addDate }</td> --%>
+							<td>${novel.addDate }</td>
 						</tr>
 					</c:forEach>
 					</table>
@@ -113,7 +113,8 @@
 							<th style="width: 10%;">번호</th>
 							<th style="width: 30%;">책 이름</th>
 							<th style="width: 40%;">내용</th>
-							<th style="width: 20%;">작성자</th>		
+							<th style="width: 10%;">작성자</th>		
+							<th style="width: 10%;">작성일</th>		
 						</tr>
 							<c:forEach items="${reviewList }" var="review">
 						<tr>
@@ -121,6 +122,7 @@
 							<td>${review.bookName }</td>   
 							<td>${review.review }</td> 
 							<td>${review.memberName }</td> 
+							<td>${review.reviewDate }</td>
 						</tr>
 					</c:forEach>
 					</table>
@@ -182,21 +184,21 @@
                   </div>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
+                <div class="card-body" style="height: 420px;">
                   <div class="chart-area">
                        <table class="table">
 						<tr>	
-							<th style="width: 10%;">번호</th>
+							<th style="width: 20%;">번호</th>
 							<th style="width: 30%;">내용</th>
 							<th style="width: 20%;">작성자</th>
-<!-- 							<th style="width: 15%;">작성일</th>	 -->
+							<th style="width: 30%;">작성일</th>	
 						</tr>
 							<c:forEach items="${commentList }" var="comment">
 						<tr>
 							<td>${comment.commentNo }</td> 
 							<td>${comment.content }</td>   
 							<td>${comment.memberName }</td> 
-<%-- 							<td>${comment.addDate }</td> --%>
+							<td>${comment.addDate }</td>
 						</tr>
 					</c:forEach>
 					</table>

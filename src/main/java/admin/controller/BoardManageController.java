@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import admin.dto.Book;
 import admin.dto.Comment;
@@ -17,6 +19,7 @@ import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
+import admin.dto.Shipment;
 import admin.service.face.AdminService;
 import admin.util.Paging;
 
@@ -49,7 +52,8 @@ public class BoardManageController {
 		logger.info("노벨리스트!!  : "+novelList);
 			
 		model.addAttribute("paging", paging2);
-		model.addAttribute("list", novelList);		
+		model.addAttribute("list", novelList);	
+	
 	}
 	
 	@RequestMapping(value = "/admin/board/novel", method = RequestMethod.POST)
@@ -220,5 +224,31 @@ public class BoardManageController {
 		logger.info("에피소드 수정22 @@@@@ : " + episode);
 		
 		return "redirect:/admin/board/novel_episode_view?episodeNo=" + episode.getEpisodeNo();
+	}
+	
+	@RequestMapping(value = "/admin/board/novel_update", method=RequestMethod.GET)
+	public ModelAndView novelUpdate(Novel novel, Model model, ModelAndView mav ) {
+		logger.info(novel.toString());
+		
+		mav.addObject("result", true);
+		
+		mav.setViewName("jsonView");
+		return mav;
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/admin/board/novel_update", method=RequestMethod.POST)
+	public boolean novelUpdateProc(Novel novel, Model model, ModelAndView mav) {
+		
+		logger.info("웹소설수정111 @@@@@ : " + novel);
+		adminService.getNovelInfo(novel);
+//		adminService.episodeUpdate(episode);
+//		episode = adminService.novelNoByEpisodeNo(episode);
+		
+//		logger.info("에피소드 수정22 @@@@@ : " + episode);
+		
+//		model.addAttribute("novel", novel);
+		return true;
 	}
 }

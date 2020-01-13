@@ -12,68 +12,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-
-	
-	
-	$(".updatebtn").on("click", function() {
-// 		var originHTML = $(this).closest("tr").children("td:nth-child(3)").html();
-		var elem = $(this)
-		if ($(this).hasClass("btn-danger")) {
-			$(this).removeClass("btn-danger");
-			$(this).addClass("btn-primary");
-			
-			$(this).text("수정");
-			elem.closest("tr").children("td:nth-child(3)").children("input").remove();
-			elem.closest("tr").children("td:nth-child(3)").children("button").remove();
-			$(this).closest("tr").children("td:nth-child(3)").children("a").css("display", "initial");
-
-			
-		} else {
-			$(this).addClass("btn-danger");
-			$(this).removeClass("btn-primary");
-			$(this).closest("tr").children("td:nth-child(3)").children("a").css("display", "none");
-			$(this).text("취소");
-				
-			var originValue = $(this).closest("tr").children("td:nth-child(3)").text();
-			var inputForm = "<input type='text' value='" + originValue + "'/>" 
-			+ "<button class='btn btn-sm btn-primary b-btn realUpdate' type='button'>수정</button>";
-			
-			
-			$(this).closest("tr").children("td:nth-child(3)").append(inputForm);
-			$(".realUpdate").on("click", function() {
-				// 	$(form).submit();
-			 	var elem = $(this)
-			 	var novelNo = $(this).closest("tr").children("td:nth-child(2)").text()
-				 	$.ajax({
-				  		type: "POST"
-				  		, url: "/admin/board/novel_update"
-				 		, data: {
-				 			novelNo : novelNo
-				 			,title : $(this).closest("td").children("input").val()
-				 		}
-				 		, dataType: "json"
-				 		, success: function(res) {
-							var title = elem.closest("td").children("input").val()
-				 			console.log(title)
-				 			elem.closest("td").html("<a href='./novel_episode?novelNo="+novelNo+"'>"+title+"</a>");
-							$(".updatebtn").removeClass("btn-danger");
-							$(".updatebtn").addClass("btn-primary");				 			
-							$(".updatebtn").text("수정");				 			
-				 		}
-				 		, error: function(e) {
-				 			console.log(e);
-				 		}
-				 	});
-				});
-				
-		}
-		
-		
-		
-	});
-			
-		
-	
 $("#checkbtn").click(function(){
 	if($("input[type=checkbox]").is(":checked")){
 	$('#novelDeleteModal').modal('show');	
@@ -86,15 +24,6 @@ $("#checkbtn").click(function(){
 	})
 	
 });
-
-
-/* 체크박스 전체선택, 전체해제 */
-$(function(){ //전체선택 체크박스 클릭 
-	$("#checkAll").click(function(){ //만약 전체 선택 체크박스가 체크된상태일경우 
-		if($("#checkAll").prop("checked")) { //해당화면에 전체 checkbox들을 체크해준다 
-			$("input[type=checkbox]").prop("checked",true); // 전체선택 체크박스가 해제된 경우 
-		} else { //해당화면에 모든 checkbox들의 체크를해제시킨다.
-			$("input[type=checkbox]").prop("checked",false); } }) })
 
 
 </script>  
@@ -153,13 +82,6 @@ select {
     bottom: 10px;
 }
 
-
-.updatebtn {
-    display: table-row;
-    position: relative;
-    left: 7px;
-    bottom: 10px;
-}
 </style>
 
         <!-- Begin Page Content -->
@@ -200,7 +122,6 @@ select {
 			<th style="width: 5%;">평점</th>
 			<th style="width: 10%;">작성일</th>		
 			<th style="width: 10%;">구분</th>	
-			<th style="width: 5%;"></th>
 		</tr>
 			<c:forEach items="${list }" var="novel">
 		<tr>
@@ -213,7 +134,6 @@ select {
 			<td>${novel.score }</td> 
 			<td>${novel.addDate }</td> 
 			<td>${novel.category }</td>
-			<td><button class="btn btn-sm btn-primary b-btn updatebtn" type="button">수정</button></td>
 		</tr>
 			<input hidden="" value="${novel.novelNo}" name="novelNo"/>
 			</c:forEach>
@@ -222,7 +142,6 @@ select {
        </div>
       </div>
 		<button class="btn btn-md btn-danger b-btn" id="checkbtn"  style="float: left;">체크삭제</button>
-		
 <!-- 		data-toggle="modal" data-target="#novelDeleteModal" -->
      </div>
     </div>

@@ -10,6 +10,7 @@ import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
+import admin.dto.Shipment;
 import admin.dto.Subscription;
 import admin.util.Paging;
 
@@ -301,5 +302,45 @@ public interface AdminService {
 	 */
 	public List<ReviewSns> latestReview();
 
-	
+	/**
+	 * 배송을 위한 member의 장르 번호 조회
+	 * @param member - memberNo이 담겨있는 DTO
+	 * @return Member - 멤버 장르 조회 값
+	 */
+	public Member getGenre(Member member);
+
+	/**
+	 * 멤버가 선택한 장르에 맞는 book 조회
+	 * @param member - genreNo
+	 * @return Book - genre에 맞는 BookNo
+	 */
+	public Book getBookGenreNo(Member member);
+
+	/**
+	 * 배송 정보 삽입
+	 * @param shipment - 배송 정보
+	 */
+	public void insertShipmentInfo(Shipment shipment);
+
+	/**
+	 * 배송했는지 확인
+	 * 
+	 * @param paging
+	 * @return
+	 */
+	public List<Shipment> checkShipment(Paging paging);
+
+	/**
+	 * 웹소설 수정
+	 * @param novel - novelNo
+	 * @return Novel - 
+	 */
+	public void getNovelInfo(Novel novel);
+
+	/**
+	 * 멤버별 배송 정보 조회
+	 * @param shipment - memberNo
+	 * @return Shipment - 저장 DTO
+	 */
+	public List<Shipment> shipmentInfo(Shipment shipment);
 }

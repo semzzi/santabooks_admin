@@ -13,6 +13,7 @@ import admin.dto.Episode;
 import admin.dto.Member;
 import admin.dto.Novel;
 import admin.dto.ReviewSns;
+import admin.dto.Shipment;
 import admin.dto.Subscription;
 import admin.service.face.AdminService;
 import admin.util.Paging;
@@ -240,4 +241,40 @@ public class AdminServiceImpl implements AdminService{
 	public List<ReviewSns> latestReview() {
 		return adminDao.selectLatestReview();
 	}
+
+	@Override
+	public Member getGenre(Member member) {
+		return adminDao.selectMemberGenre(member);
+	}
+
+	@Override
+	public Book getBookGenreNo(Member member) {
+		return adminDao.selectBookByGenre(member);
+	}
+
+	@Override
+	public void insertShipmentInfo(Shipment shipment) {
+		// 조회해서 확인 shipno, date로
+		
+		adminDao.insertShipment(shipment);
+		
+	}
+	
+	@Override
+	public List<Shipment> checkShipment(Paging paging) {
+		
+		return adminDao.checkShipment(paging);
+	}
+
+	@Override
+	public void getNovelInfo(Novel novel) {
+		adminDao.updateNovel(novel);
+	}
+
+	@Override
+	public List<Shipment> shipmentInfo(Shipment shipment) {
+		return adminDao.selectShipmentList(shipment);
+	}
+	
+	
 }

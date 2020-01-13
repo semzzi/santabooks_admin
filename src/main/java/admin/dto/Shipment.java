@@ -1,10 +1,13 @@
 package admin.dto;
 
-public class Subscription {
-	private int subNo;
+public class Shipment {
+	private String shipmentDate;
+	private int shipNo;
 	private int memberNo;
+	private int bookNo;
+	private int subNo;
+	private int checkShipment;
 	private String subDate;
-	private String subName;
 	private String subTel;
 	private String subTerm;
 	private String subPay;
@@ -13,26 +16,32 @@ public class Subscription {
 	private String jibunAddress;
 	private String detailAddress;
 	private String extraAddress;
+	private String bookName;
 	private String memberName;
-	private String memberId;
-	private int checkShipment;
-
-
+	
 	@Override
 	public String toString() {
-		return "Subscription [subNo=" + subNo + ", memberNo=" + memberNo + ", subDate=" + subDate + ", subName="
-				+ subName + ", subTel=" + subTel + ", subTerm=" + subTerm + ", subPay=" + subPay + ", postCode="
-				+ postCode + ", roadAddress=" + roadAddress + ", jibunAddress=" + jibunAddress + ", detailAddress="
-				+ detailAddress + ", extraAddress=" + extraAddress + ", memberName=" + memberName + ", memberId="
-				+ memberId + ", checkShipment=" + checkShipment + "]";
+		return "Shipment [shipmentDate=" + shipmentDate + ", shipNo=" + shipNo + ", memberNo=" + memberNo + ", bookNo="
+				+ bookNo + ", subNo=" + subNo + ", checkShipment=" + checkShipment + ", subDate=" + subDate
+				+ ", subTel=" + subTel + ", subTerm=" + subTerm + ", subPay=" + subPay + ", postCode=" + postCode
+				+ ", roadAddress=" + roadAddress + ", jibunAddress=" + jibunAddress + ", detailAddress=" + detailAddress
+				+ ", extraAddress=" + extraAddress + ", bookName=" + bookName + ",memberName" + memberName + "]";
 	}
 
-	public int getSubNo() {
-		return subNo;
+	public String getShipmentDate() {
+		return shipmentDate;
 	}
 
-	public void setSubNo(int subNo) {
-		this.subNo = subNo;
+	public void setShipmentDate(String shipmentDate) {
+		this.shipmentDate = shipmentDate;
+	}
+
+	public int getShipNo() {
+		return shipNo;
+	}
+
+	public void setShipNo(int shipNo) {
+		this.shipNo = shipNo;
 	}
 
 	public int getMemberNo() {
@@ -43,20 +52,36 @@ public class Subscription {
 		this.memberNo = memberNo;
 	}
 
+	public int getBookNo() {
+		return bookNo;
+	}
+
+	public void setBookNo(int bookNo) {
+		this.bookNo = bookNo;
+	}
+
+	public int getSubNo() {
+		return subNo;
+	}
+
+	public void setSubNo(int subNo) {
+		this.subNo = subNo;
+	}
+
+	public int getCheckShipment() {
+		return checkShipment;
+	}
+
+	public void setCheckShipment(int checkShipment) {
+		this.checkShipment = checkShipment;
+	}
+
 	public String getSubDate() {
 		return subDate;
 	}
 
 	public void setSubDate(String subDate) {
 		this.subDate = subDate;
-	}
-
-	public String getSubName() {
-		return subName;
-	}
-
-	public void setSubName(String subName) {
-		this.subName = subName;
 	}
 
 	public String getSubTel() {
@@ -123,28 +148,21 @@ public class Subscription {
 		this.extraAddress = extraAddress;
 	}
 
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	
 	public String getMemberName() {
 		return memberName;
 	}
-
+	
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-
-	public String getMemberId() {
-		return memberId;
-	}
-
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
-
-	public int getCheckShipment() {
-		return checkShipment;
-	}
-
-	public void setCheckShipment(int checkShipment) {
-		this.checkShipment = checkShipment;
-	}
+	
 	
 }
