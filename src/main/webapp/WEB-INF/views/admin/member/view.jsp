@@ -84,7 +84,7 @@ button {
 			<td>${member.memberGender }</td>
 			<td>${member.genre }</td>
 			<c:if test="${member.subcheck eq '구독중' }">
-			<td><a href="admin/member/subInfo"><button class="btn btn-md btn-primary">정보</button></a></td>
+			<td>구독중</td>
 			</c:if>
 			<c:if test="${member.subcheck eq 'n' }">
 			<td>없음</td>

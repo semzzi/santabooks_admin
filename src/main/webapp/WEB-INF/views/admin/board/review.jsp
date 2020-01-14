@@ -88,7 +88,7 @@ select {
 }
 
 #content {
-	min-height: 985px;
+	min-height: 840px;
 }
 
 #checkbtn {
@@ -100,7 +100,7 @@ select {
 	margin-bottom: 11px;
     position: absolute;
     right: 24px;
-    bottom: 105px !important;
+    bottom: 35px !important;
 }
 
 </style>

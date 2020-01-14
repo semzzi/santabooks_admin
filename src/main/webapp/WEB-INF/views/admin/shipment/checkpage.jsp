@@ -104,7 +104,7 @@ select {
 			<td>${ship.subNo }</td>
 		</tr>
 		<tr>
-			<th style="width: 15%;">결제금액</th>				
+			<th style="width: 15%;">결제</th>				
 			<td>${ship.subPay }</td>
 		</tr>
 			</table>

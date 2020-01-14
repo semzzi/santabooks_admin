@@ -160,6 +160,10 @@ select {
     left: 7px;
     bottom: 10px;
 }
+
+.container-fluid {
+	min-height: 850px;
+}
 </style>
 
         <!-- Begin Page Content -->

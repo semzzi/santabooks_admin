@@ -131,7 +131,7 @@ button, a {
         <div class="modal-body">새로운 도서를 추가하시겠습니까?</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="#" id="btnWrite" style="color : white;">확인</a>
+          <a class="btn btn-primary" href="#" id="novelWrite" style="color : white;">확인</a>
         </div>
       </div>
     </div>
