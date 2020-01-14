@@ -343,4 +343,13 @@ public interface AdminService {
 	 * @return Shipment - 저장 DTO
 	 */
 	public List<Shipment> shipmentInfo(Shipment shipment);
+
+	/**
+	 * 댓글의 답글 리스트 보여주기
+	 * @param comment - commentNo
+	 * @return Comment - 리스트 
+	 */
+	public List<Comment> getReply(Comment comment);
+
+
 }

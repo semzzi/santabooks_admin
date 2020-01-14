@@ -3,16 +3,20 @@ package admin.dto;
 public class Comment {
 	
 	private int commentNo;
+	private int episodeNo;
 	private int memberNo;
 	private String content;
 	private String addDate;
+	private int parentCmtNo;
+	private int seq;
 	private String memberId;
 	private String memberName;
 	
 	@Override
 	public String toString() {
-		return "Comment [addDate=" + addDate + ", commentNo=" + commentNo + ", content=" + content + ", memberId="
-				+ memberId + ", memberName=" + memberName + ", memberNo=" + memberNo + "]";
+		return "Comment [commentNo=" + commentNo + ", episodeNo=" + episodeNo + ", memberNo=" + memberNo + ", content="
+				+ content + ", addDate=" + addDate + ", parentCmtNo=" + parentCmtNo + ", seq=" + seq + ", memberId="
+				+ memberId + ", memberName=" + memberName + "]";
 	}
 
 	public int getCommentNo() {
@@ -21,6 +25,14 @@ public class Comment {
 
 	public void setCommentNo(int commentNo) {
 		this.commentNo = commentNo;
+	}
+
+	public int getEpisodeNo() {
+		return episodeNo;
+	}
+
+	public void setEpisodeNo(int episodeNo) {
+		this.episodeNo = episodeNo;
 	}
 
 	public int getMemberNo() {
@@ -47,6 +59,22 @@ public class Comment {
 		this.addDate = addDate;
 	}
 
+	public int getParentCmtNo() {
+		return parentCmtNo;
+	}
+
+	public void setParentCmtNo(int parentCmtNo) {
+		this.parentCmtNo = parentCmtNo;
+	}
+
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
+
 	public String getMemberId() {
 		return memberId;
 	}
@@ -62,5 +90,6 @@ public class Comment {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
+	
 	
 }

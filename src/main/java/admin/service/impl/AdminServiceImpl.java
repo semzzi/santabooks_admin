@@ -275,6 +275,11 @@ public class AdminServiceImpl implements AdminService{
 	public List<Shipment> shipmentInfo(Shipment shipment) {
 		return adminDao.selectShipmentList(shipment);
 	}
-	
+
+	@Override
+	public List<Comment> getReply(Comment comment) {
+		return adminDao.selectReplyList(comment);
+	}
+
 	
 }

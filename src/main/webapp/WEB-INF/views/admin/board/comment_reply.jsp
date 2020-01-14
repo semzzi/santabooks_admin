@@ -97,26 +97,14 @@ select {
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
-                  <h6 class="m-0 font-weight-bold text-primary">댓글 목록</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/board/comment" method="get">
-                    <select name="searchType">
-                    	<option value="content">내용</option> 
-                    	<option value="memberName">작성자</option> 
-                    </select>
-                    <div class="input-group">
-              <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" style="bottom: 8px;">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-            </form>
+                  <h6 class="m-0 font-weight-bold text-primary">답글 목록</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-        <form action="/admin/board/comment" method="post" id="checkDelete">
+        <form action="/admin/board/comment_reply" method="post" id="checkDelete">
 			<table class="table table-hover">
+			<c:choose>
+			<c:when test="${not empty reply}">
 		<tr>
 		   	<th style="width: 1%"><input type="checkbox" class="chk" id="checkAll" name="checkAll">				
 			<th style="width: 5%;">번호</th>	
@@ -124,30 +112,34 @@ select {
 			<th style="width: 7%;">작성자</th>
 			<th style="width: 10%;">작성일</th>		
 		</tr>
-			<c:forEach items="${list }" var="comment">
+			<c:forEach items="${reply }" var="r">
 		<tr>
 			<td>
 			<label style="height: 1px;"><input type="checkbox" class="chk" id="checkRow"
-             name="checkRow" value="${comment.commentNo }">
+             name="checkRow" value="${r.commentNo }">
              </label>
              </td>
-			<td>${comment.commentNo }</td> 
-			<td><a href="./comment_reply?commentNo=${comment.commentNo }">${comment.content }</a></td>
-			<td>${comment.memberName }</td>   
-			<td>${comment.addDate }</td> 
+			<td>${r.commentNo }</td> 
+			<td>${r.content }</td>
+			<td>${r.memberName }</td>   
+			<td>${r.addDate }</td> 
 		</tr>
-		<input type="hidden" name="commentNo" value="${comment.commentNo }" />
+		<input type="hidden" name="parentCmtNo" value="${r.parentCmtNo }"/>
 			</c:forEach>
+			</c:when>
+			<c:otherwise>			
+			<th>작성된 답글이 없습니다.</th>
+			</c:otherwise>
+			</c:choose>
 			</table>
 		</form>
        </div>
       </div>
-      <button class="btn btn-md btn-danger b-btn" id="checkbtn" style="float: left;">체크삭제</button>      
+      <button class="btn btn-md btn-danger b-btn" id="checkbtn" style="float: left;">체크삭제</button>
+      <a href="/admin/board/comment"><button class="btn btn-md btn-primary" id="list" style="float: left; margin-left: 5px;">목록</button></a>
      </div>
 	</div>
         <!-- /.container-fluid -->
-	
-	<jsp:include page="/WEB-INF/views/layout/paging_comment.jsp" />   
 	</div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
   

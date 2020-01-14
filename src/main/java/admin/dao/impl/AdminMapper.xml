@@ -90,6 +90,7 @@ B ORDER BY rnum) REVIEW_SNS WHERE rnum BETWEEN #{startNo} AND #{endNo}
 SELECT * FROM (SELECT rownum rnum, B.* FROM(SELECT comment_table.commentNo, comment_table.memberNo, member.memberName, member.memberId,
 comment_table.content, comment_table.addDate
 FROM comment_table,member WHERE 1=1
+AND comment_table.parentCmtNo = 0
 <if test="keyword != null and !keyword.equals('')">
 AND ${searchType} like '%'||#{keyword}||'%'
 </if>
@@ -117,7 +118,8 @@ AND ${searchType} like '%'||#{keyword}||'%'
 
 <select id="selectCommentCntAll" parameterType="admin.util.Paging" resultType="int">
 SELECT count(*) FROM comment_table, member WHERE 1=1
-AND member.memberNo = comment_table.memberNo
+AND member.memberNo = comment_table.memberNo 
+AND comment_table.parentCmtNo = 0
 <if test="keyword != null and !keyword.equals('')">
 AND ${searchType} like '%'||#{keyword}||'%'
 </if>
@@ -309,5 +311,12 @@ WHERE novelNo = #{novelNo}
 select ship.shipNo, ship.shipmentDate, ship.memberNo, ship.bookNo, ship.subNo, sub.subDate, sub.subName, sub.subTel, sub.subTerm, sub.subPay, sub.postCode, sub.roadAddress, sub.jibunAddress, sub.detailAddress, sub.extraAddress, b.bookName, m.memberName
 FROM shipment ship, subscription sub, book b, member m WHERE ship.memberNo = sub.memberNo AND b.bookNo = ship.bookNo AND m.memberNo = ship.memberNo AND ship.memberNo = #{memberNo} 
 </select>
+
+<select id="selectReplyList" parameterType="admin.dto.Comment" resultType="admin.dto.Comment">
+SELECT c.commentNo, c.episodeNo, c.memberNo, m.memberName, c.content, c.addDate, c.parentCmtNo, c.seq 
+FROM member m, comment_table c
+WHERE m.memberNo = c.memberNo AND c.parentCmtNo = #{commentNo} ORDER BY c.seq desc
+</select>
+
 
 </mapper>

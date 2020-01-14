@@ -328,6 +328,11 @@ public interface AdminDao {
 	 */
 	public List<Shipment> selectShipmentList(Shipment shipment);
 
-
+	/**
+	 * commentNo으로 답글 select
+	 * @param comment - commentNo
+	 * @return Comment - comment DTO
+	 */
+	public List<Comment> selectReplyList(Comment comment);
 
 }

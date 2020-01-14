@@ -148,6 +148,38 @@ public class BoardManageController {
 				
 	}
 	
+	@RequestMapping(value = "/admin/board/comment_reply", method = RequestMethod.GET)
+	public void commentReplyView(Comment comment, String[] checkRow, Model model) {
+		
+		logger.info("코멘트넘 받아오기 ! : " + comment);
+		
+		List<Comment> replyList = adminService.getReply(comment);
+		
+		
+//		for(int i=0; i<checkRow.length; i++) {
+//			logger.info("이거슨 코멘트넘 받아오는것 ! : " + checkRow[i]);
+//			comment.setCommentNo((Integer.parseInt(checkRow[i])));
+//			adminService.deleteComment(comment);
+//			
+//		}
+		
+		model.addAttribute("reply", replyList);
+	}
+	
+	@RequestMapping(value = "/admin/board/comment_reply", method = RequestMethod.POST)
+	public String commentReply(Comment comment, String[] checkRow) {
+		
+		for(int i=0; i<checkRow.length; i++) {
+			logger.info("이거슨 코멘트넘 받아오는것 ! : " + checkRow[i]);
+			comment.setCommentNo((Integer.parseInt(checkRow[i])));
+			adminService.deleteComment(comment);
+//			
+		}
+		
+		return "redirect:/admin/board/comment_reply?commentNo=" + comment.getParentCmtNo();
+		
+	}
+	
 	@RequestMapping(value = "/admin/board/novel_episode", method = RequestMethod.GET)
 	public void episodeView(Model model, Novel novel, Episode episode, Paging paging ) {
 		
