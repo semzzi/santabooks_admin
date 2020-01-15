@@ -271,7 +271,7 @@ SELECT a.* FROM(SELECT c.commentNo, c.content, m.memberName, TO_CHAR(TO_DATE(c.a
 </select>
 
 <select id="selectLatestReview" resultType="admin.dto.ReviewSns">
-SELECT a.* FROM(SELECT r.feedNo, b.bookName, r.review, TO_CHAR(TO_DATE(r.reviewDate, 'yyyy/mm/dd'), 'yy-mm-dd') reviewDate, m.memberName FROM review_sns r, member m, book b WHERE r.memberNo = m.memberNo AND b.bookNo = r.bookNo ORDER BY r.feedNo desc)a <![CDATA[WHERE rownum <= 5]]>
+SELECT a.* FROM(SELECT r.feedNo, b.bookName, r.review, TO_CHAR(TO_DATE(r.reviewDate, 'yyyy/mm/dd hh24:mi:ss'), 'YY-MM-DD') reviewDate, m.memberName FROM review_sns r, member m, book b WHERE r.memberNo = m.memberNo AND b.bookNo = r.bookNo ORDER BY r.feedNo desc)a <![CDATA[WHERE rownum <= 5]]>
 </select>
 
 <select id="selectMemberGenre" parameterType="admin.dto.Member" resultType="admin.dto.Member">

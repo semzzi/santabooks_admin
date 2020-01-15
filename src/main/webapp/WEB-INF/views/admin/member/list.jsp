@@ -15,7 +15,16 @@ $(document).ready(function(){
 $("#btnWrite").click(function() {
 	$(form).submit();
 });
+
+$("#searchbtn").click(function(){
+	var keyword = $(this).parents("form").find("[name=keyword]").val();
+	if(keyword== null || keyword=="") {
+		$('#searchModal').modal('show');	
+	} else{
+	$('#searchForm').submit();
+	}
 	
+})
 
 });
 
@@ -86,7 +95,7 @@ select {
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height: 70px;">
                   <h6 class="m-0 font-weight-bold text-primary">회원 목록</h6>
-                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/admin/member/list" method="get">
+                   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" id="searchForm" action="/admin/member/list" method="get">
                     <select name="searchType">
                     	<option value="memberId">이메일</option> 
                     	<option value="memberName">이름</option> 
@@ -96,7 +105,7 @@ select {
                     <div class="input-group">
               <input style="bottom: 8px;"type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" style="bottom: 8px;">
+                <button class="btn btn-primary" id="searchbtn" type="button" style="bottom: 8px;">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>

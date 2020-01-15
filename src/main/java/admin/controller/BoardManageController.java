@@ -259,7 +259,7 @@ public class BoardManageController {
 	}
 	
 	@RequestMapping(value = "/admin/board/novel_update", method=RequestMethod.GET)
-	public ModelAndView novelUpdate(Novel novel, Model model, ModelAndView mav ) {
+	public ModelAndView novelUpdate(Novel novel, ModelAndView mav ) {
 		logger.info(novel.toString());
 		
 		mav.addObject("result", true);
@@ -271,7 +271,7 @@ public class BoardManageController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/admin/board/novel_update", method=RequestMethod.POST)
-	public boolean novelUpdateProc(Novel novel, Model model, ModelAndView mav) {
+	public boolean novelUpdateProc(Novel novel, ModelAndView mav) {
 		
 		logger.info("웹소설수정111 @@@@@ : " + novel);
 		adminService.getNovelInfo(novel);

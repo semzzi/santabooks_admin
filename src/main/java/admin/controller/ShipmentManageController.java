@@ -82,7 +82,7 @@ public class ShipmentManageController {
 		
 		adminService.insertShipmentInfo(shipment);
 		
-		int totalCount = adminService.subMemberCntAll(paging);
+//		int totalCount = adminService.subMemberCntAll(paging);
 		
 //		shipment = adminService.checkShipment(paging);		
 		
