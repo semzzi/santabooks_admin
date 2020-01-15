@@ -71,7 +71,7 @@ select {
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-7" id="list" style="height: 750px;">
+            <div class="col-xl-12 col-lg-7" id="list" >
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
 		<c:forEach items="${shipment }" var="ship">
