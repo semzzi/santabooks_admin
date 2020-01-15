@@ -12,7 +12,7 @@ button, a {
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; SantaBooks by 강인욱&nbsp;강세미&nbsp;김덕진&nbsp;김도훈&nbsp;신연섭&nbsp;홍해인</span>
           </div>
         </div>
       </footer>

@@ -111,7 +111,7 @@ select {
 			<td>${s.memberName }</td> 
 			<td class="btnTd" data-memberno='${s.memberNo }'>
 			<c:if test="${s.checkShipment eq 0 }">
-			<button class="btn btn-md btn-primary b-btn shipmentBtn" id="btnShipment">배송</button>
+			<button class="btn btn-md btn-primary b-btn shipmentBtn" name = "memberNo" value="${s.memberNo }" id="btnShipment">배송</button>
 			</c:if>
 			<c:if test="${s.checkShipment eq 1 }">
 			<button class="btn btn-md btn-primary b-btn shipmentBtn" disabled="disabled" id="btnShipment">배송</button>
@@ -119,7 +119,6 @@ select {
 			</c:if>
 			</td> 
 		</tr>
-			<input type="hidden" name="memberNo" value="${s.memberNo }"/>
 			</c:forEach>
 			</table>
 		</form>

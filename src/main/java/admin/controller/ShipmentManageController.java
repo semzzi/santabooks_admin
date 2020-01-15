@@ -46,6 +46,8 @@ public class ShipmentManageController {
 	@RequestMapping(value="/admin/shipment/list", method = RequestMethod.POST)
 	public void shipment(Member member, Model model, Shipment shipment, Subscription subscription, Paging paging) {
 		
+		
+		
 		logger.info("배송멤버 넘버 @ : "+member);
 		
 		// 넘겨받은 memberNo으로 genre 조회

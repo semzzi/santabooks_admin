@@ -116,9 +116,8 @@ select {
 
         </div>
         <!-- /.container-fluid -->
-<!-- 		<a href="/board/write"><button id="btnWrite" style="float: right;">작성</button></a> -->
-
-	<jsp:include page="/WEB-INF/views/layout/paging_submember.jsp" />   
+           <a href="/admin/shipment/list"><button class="btn btn-md btn-primary b-btn" id="btnlist">목록</button></a>           
+ 
 	</div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />   
   
