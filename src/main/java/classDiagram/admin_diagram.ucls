@@ -4,7 +4,7 @@
   <class id="1" language="java" name="admin.controller.AdminLoginController" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/controller/AdminLoginController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2772" y="137"/>    
+    <position height="-1" width="-1" x="1321" y="763"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -14,7 +14,7 @@
   <class id="2" language="java" name="admin.controller.BoardManageController" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/controller/BoardManageController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3202" y="245"/>    
+    <position height="-1" width="-1" x="1296" y="1069"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -24,7 +24,7 @@
   <class id="3" language="java" name="admin.controller.BookManageController" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/controller/BookManageController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1576" y="169"/>    
+    <position height="-1" width="-1" x="1279" y="164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -34,7 +34,7 @@
   <class id="4" language="java" name="admin.controller.MemberManageController" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/controller/MemberManageController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2352" y="135"/>    
+    <position height="-1" width="-1" x="1314" y="570"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,7 +44,7 @@
   <class id="5" language="java" name="admin.controller.ShipmentManageController" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/controller/ShipmentManageController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1945" y="125"/>    
+    <position height="-1" width="-1" x="1313" y="385"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -53,7 +53,7 @@
   </class>  
   <interface id="6" language="java" name="admin.dao.face.AdminDao" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/dao/face/AdminDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1181" y="1619"/>    
+    <position height="-1" width="-1" x="2448" y="649"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -62,7 +62,7 @@
   </interface>  
   <class id="7" language="java" name="admin.dto.Admin" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/dto/Admin.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="342" y="775"/>    
+    <position height="-1" width="-1" x="993" y="698"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -71,7 +71,7 @@
   </class>  
   <class id="8" language="java" name="admin.dto.Book" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/dto/Book.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="581" y="936"/>    
+    <position height="-1" width="-1" x="997" y="308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -89,7 +89,7 @@
   </class>  
   <class id="10" language="java" name="admin.dto.Episode" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/dto/Episode.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="583" y="1475"/>    
+    <position height="-1" width="-1" x="782" y="1318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -98,7 +98,7 @@
   </class>  
   <class id="11" language="java" name="admin.dto.Member" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/dto/Member.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="363" y="1471"/>    
+    <position height="-1" width="-1" x="569" y="1130"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -116,7 +116,7 @@
   </class>  
   <class id="13" language="java" name="admin.dto.ReviewSns" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/dto/ReviewSns.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="581" y="337"/>    
+    <position height="-1" width="-1" x="568" y="335"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -125,7 +125,7 @@
   </class>  
   <class id="14" language="java" name="admin.dto.Shipment" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/dto/Shipment.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="797" y="553"/>    
+    <position height="-1" width="-1" x="783" y="551"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -143,7 +143,7 @@
   </class>  
   <interface id="16" language="java" name="admin.service.face.AdminService" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/service/face/AdminService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2274" y="1078"/>    
+    <position height="-1" width="-1" x="1809" y="659"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -152,7 +152,7 @@
   </interface>  
   <class id="17" language="java" name="admin.service.impl.AdminServiceImpl" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/service/impl/AdminServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1183" y="520"/>    
+    <position height="-1" width="-1" x="2118" y="669"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -161,7 +161,7 @@
   </class>  
   <class id="18" language="java" name="admin.util.Paging" project="santabooksAdmin" 
     file="/santabooksAdmin/src/main/java/admin/util/Paging.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="796" y="1716"/>    
+    <position height="-1" width="-1" x="351" y="1128"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

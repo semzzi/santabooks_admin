@@ -67,10 +67,9 @@ public class ShipmentManageController {
 		// shipment 테이블에 book 입력
 		shipment.setBookNo(bookInfo.getBookNo());
 		
-		
 		// date  = service에서 만들기
-		LocalDateTime date = LocalDateTime.now();
-		shipment.setShipmentDate(date.toString());
+//		LocalDateTime date = LocalDateTime.now();
+//		shipment.setShipmentDate(date.toString());
 		
 		// memberno = 로그인한얘 no
 		shipment.setMemberNo(member.getMemberNo());
@@ -82,20 +81,19 @@ public class ShipmentManageController {
 		
 		adminService.insertShipmentInfo(shipment);
 		
-//		int totalCount = adminService.subMemberCntAll(paging);
+		int totalCount = adminService.subMemberCntAll(paging);
+		paging = new Paging(totalCount, paging.getCurPage());
 		
-//		shipment = adminService.checkShipment(paging);		
+		List<Shipment> shipment2 = adminService.checkShipment(paging);		
 		
-//		logger.info("멀까요오옹 :" +shipment2);
+		logger.info("멀까요오옹 :" +shipment2);
 //		System.out.println("멀까요오옹 :" +shipment2);
-		
-//		if(checkShipment==1) {
-//			Paging paging2 = new Paging(totalCount, paging.getCurPage());
-//			List<Subscription> memberList = adminService.subMember(paging2);
-//			model.addAttribute("paging", paging2);
-//			model.addAttribute("list", memberList);
 //		
-//		}
+			Paging paging2 = new Paging(totalCount, paging.getCurPage());
+			List<Subscription> memberList = adminService.subMember(paging2);
+			model.addAttribute("paging", paging2);
+			model.addAttribute("list", memberList);
+//	
 		
 				
 	}

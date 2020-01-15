@@ -230,7 +230,7 @@ WHERE episodeNo = #{episodeNo}
 
 <select id="selectSubMemberCntAll" parameterType="admin.util.Paging" resultType="int">
 SELECT count(*) FROM member WHERE subCheck = '구독중'
-</select>
+</select> 
 
 <select id="selectSubMemberAll" resultType="admin.dto.Subscription" parameterType="admin.util.Paging">
 SELECT DISTINCT * FROM (SELECT rownum rnum, B.* FROM(SELECT member.memberNo, member.memberName, member.memberId, 
@@ -290,7 +290,7 @@ SELECT * FROM (
 <insert id="insertShipment" parameterType="admin.dto.Shipment">
 		INSERT INTO shipment (shipno, shipmentdate, memberno, bookno, subno )
 		
-		VALUES ( #{shipNo}, #{shipmentDate}, #{memberNo}, #{bookNo}, #{subNo} )	
+		VALUES ( #{shipNo}, TO_CHAR(sysdate, 'YYYY-MM'), #{memberNo}, #{bookNo}, #{subNo} )	
 </insert>
 
 <select id="checkShipment" parameterType="admin.util.Paging" resultType="admin.dto.Shipment">
